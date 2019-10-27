@@ -49,4 +49,7 @@ header .skills-container .container {
   header .skills-container {
     padding-top: 0;
   }
+  header .skills-container a {
+    font-size: 14px;
+  }
 }
