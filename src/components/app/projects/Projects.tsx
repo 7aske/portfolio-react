@@ -71,7 +71,7 @@ const projects: ProjectType[] = [
 export class Projects extends React.Component {
 	render() {
 		return (
-			<div id="skills">
+			<div id="projects">
 				<div className="container grey darken-4">
 					<div className="row pt-5 mb-0">
 						<h5 className="text-white mt-0 pt-0 mb-5">Here are listed some of the more notable projects I worked

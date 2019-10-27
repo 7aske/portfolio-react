@@ -3,7 +3,6 @@ $profile-offset: -150px;
 $profile-img-size: 300px;
 
 header {
-	height: 110vh;
 	background: {
 		image: linear-gradient(rgba(0, 0, 0, 0.5),
 				rgba(0, 0, 0, 0.5)), url("../../../assets/video/header-bg.jpg");;
@@ -18,8 +17,8 @@ header {
 		background: linear-gradient(rgba(0, 0, 0, 0.3),
 				rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
 
-		height: 50vh;
-		position: absolute;
+		height: 100vh;
+		position: relative;
 		width: 100vw;
 		top: 50vh;
 		border-top: 3px solid $border-color;
@@ -48,8 +47,8 @@ header {
 
 	.skills-container {
 		border-top: 3px solid $border-color;
-		padding-top: 3em;
-		height: 19vh;
+		padding-top: 4em;
+		height: 20vh;
 		background: linear-gradient(rgba(0, 0, 0, 0.5),
 				rgba(0, 0, 0, 0.5)), url("../../../assets/images/namebg.png");
 
@@ -61,9 +60,12 @@ header {
 }
 @media screen and (max-width: 540px) {
 	header {
-		height: 100vh;
-		//.name-container {
-		//	top:30vh;
-		//}
+		.name-container{
+			//height: 50em;
+			margin-bottom: 6em;
+		}
+		.skills-container{
+			padding-top: 0;
+		}
 	}
 }
