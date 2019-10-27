@@ -1,0 +1,19 @@
+.skill-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #343434;
+  width: 150px;
+  height: 10px;
+  float: right;
+  margin-top: 7px;
+  border-radius: 5px;
+  transition: all 1.5s;
+}
+.skill-bar .skill-fill {
+  transition: all 1.5s;
+  border-radius: 4px;
+  width: 0;
+  height: inherit;
+  background-color: darkorange;
+}

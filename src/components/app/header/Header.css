@@ -1,0 +1,50 @@
+header {
+  height: 110vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/video/header-bg.jpg");
+  background-size: auto 100%;
+  background-position: top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+header .name-container {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
+  height: 50vh;
+  position: absolute;
+  width: 100vw;
+  top: 50vh;
+  border-top: 3px solid #232323;
+}
+header .name-container .name-image {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  margin-bottom: -150px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border: 3px solid #232323;
+  border-radius: 150px;
+}
+header .name-container .name-image img {
+  position: relative;
+  left: -85px;
+  height: inherit;
+}
+header .skills-container {
+  border-top: 3px solid #232323;
+  padding-top: 3em;
+  height: 19vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/images/namebg.png");
+}
+header .skills-container .container {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 540px) {
+  header {
+    height: 100vh;
+  }
+}
