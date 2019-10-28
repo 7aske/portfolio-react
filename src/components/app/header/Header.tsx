@@ -1,5 +1,6 @@
 import React from "react";
 import profile from "../../../assets/images/profile.jpg";
+import profileVideo from "../../../assets/video/header.mp4";
 import "./Header.css";
 import "../../helpers.css";
 import "../../../../node_modules/materialize-css/dist/css/materialize.min.css";
@@ -50,6 +51,10 @@ export class Header extends React.Component {
 	render() {
 		return (
 			<header id="top">
+				<video autoPlay muted loop className="hide-on-small-only">
+					<source src={profileVideo} type="video/mp4" />
+				</video>
+				<div className="video-overlay hide-on-small-only" />
 				<div className="name-container grey darken-4">
 					<div className="name-image animated slideInDown">
 						<img src={profile} alt="profile"/>

@@ -6,6 +6,20 @@ header {
   background-repeat: no-repeat;
   overflow: hidden;
 }
+header video {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  right: 0;
+}
+header .video-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 header .name-container {
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
   height: 100vh;

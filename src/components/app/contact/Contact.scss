@@ -1,0 +1,26 @@
+#contact {
+	input, textarea {
+		color: #f8f9fa;
+	}
+
+	.social-container {
+		display: flex;
+		justify-content: space-around;
+
+		a {
+			display: inline-block;
+			font-family: Ubuntu, serif;
+			margin: {
+				left: 10px;
+				right: 10px;
+			};
+		}
+
+		span {
+			padding: {
+				right: 10px;
+			};
+		}
+	}
+}
+

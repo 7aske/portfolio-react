@@ -1,0 +1,16 @@
+#contact input, #contact textarea {
+  color: #f8f9fa;
+}
+#contact .social-container {
+  display: flex;
+  justify-content: space-around;
+}
+#contact .social-container a {
+  display: inline-block;
+  font-family: Ubuntu, serif;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#contact .social-container span {
+  padding-right: 10px;
+}

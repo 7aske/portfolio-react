@@ -12,7 +12,21 @@ header {
 		repeat: no-repeat;
 	}
 	overflow: hidden;
-
+	video {
+		position: absolute;
+		//width: 100vw;
+		height: 100vh;
+		top: 0;
+		right: 0;
+	}
+	.video-overlay {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		right: 0;
+		background-color: rgba(0,0,0,0.5);
+	}
 	.name-container {
 		background: linear-gradient(rgba(0, 0, 0, 0.3),
 				rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
@@ -22,7 +36,6 @@ header {
 		width: 100vw;
 		top: 50vh;
 		border-top: 3px solid $border-color;
-
 		.name-image {
 			position: relative;
 			width: $profile-img-size;
