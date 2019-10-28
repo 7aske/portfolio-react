@@ -6,11 +6,12 @@
 	.social-container {
 		display: flex;
 		justify-content: space-around;
-
 		a {
 			display: inline-block;
 			font-family: Ubuntu, serif;
+			width: 140px;
 			margin: {
+				top: 10px;
 				left: 10px;
 				right: 10px;
 			};

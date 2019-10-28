@@ -8,10 +8,12 @@ import { Divider } from "./divider/Divider";
 import { Projects } from "./projects/Projects";
 import { About } from "./about/About";
 import { Contact } from "./contact/Contact";
+import { Navigation } from "./navigation/Navigation";
 
 function App() {
 	return (
 		<main className="App grey darken-3">
+			<Navigation />
 			<Header/>
 			<Divider title="Skills"/>
 			<Skills/>

@@ -6,7 +6,30 @@ import "../../helpers.css";
 import "../../../../node_modules/materialize-css/dist/css/materialize.min.css";
 import { HeaderLink } from "./headerLink/HeaderLink";
 
-type HeaderHref = {
+export const navigationLinks:HeaderHref[] = [{
+	name: "Skills",
+	href: "#skills",
+	icon: "build",
+}, {
+	name: "Projects",
+	href: "#projects",
+	icon: "code",
+}, {
+	name: "About",
+	href: "#about",
+	icon: "info_outline",
+}, {
+	name: "Contact",
+	href: "#contact",
+	icon: "contact_mail",
+}, {
+	name: "Blog",
+	href: "http://blog.7aske.com",
+	icon: "local_cafe",
+	target: "blank",
+}];
+
+export type HeaderHref = {
 	href: string;
 	name: string;
 	icon: string;
@@ -23,28 +46,7 @@ export class Header extends React.Component {
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			links: [{
-				name: "Skills",
-				href: "#skills",
-				icon: "build",
-			}, {
-				name: "Projects",
-				href: "#projects",
-				icon: "code",
-			}, {
-				name: "About",
-				href: "#about",
-				icon: "info_outline",
-			}, {
-				name: "Contact",
-				href: "#contact",
-				icon: "contact_mail",
-			}, {
-				name: "Blog",
-				href: "http://blog.7aske.com",
-				icon: "local_cafe",
-				target: "blank",
-			}],
+			links: navigationLinks,
 		};
 	}
 

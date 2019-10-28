@@ -1,0 +1,6 @@
+nav {
+  position: fixed;
+  top: -65px;
+  z-index: 999;
+  transition: 500ms transform;
+}

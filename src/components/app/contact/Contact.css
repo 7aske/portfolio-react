@@ -8,6 +8,8 @@
 #contact .social-container a {
   display: inline-block;
   font-family: Ubuntu, serif;
+  width: 140px;
+  margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
 }

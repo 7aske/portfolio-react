@@ -62,12 +62,12 @@ export class ProjectListItem extends React.Component {
 						<a className="github-button" href={this.state.repository} data-icon="octicon-star"
 						   data-size="large" data-show-count="true"
 						   aria-label={`Star ${this.state.username}/${this.state.name} on GitHub`}>Star</a>
-						<span className="show-on-small"/>
+						<span className="show-on-small mt-1 mb-1"/>
 						<span className="p-1"/>
 						<a className="github-button" href={this.state.repository + "/fork"}
 						   data-icon="octicon-repo-forked" data-size="large" data-show-count="true"
 						   aria-label={`Fork ${this.state.username}/${this.state.name} on GitHub`}>Fork</a>
-						<span className="show-on-small"/>
+						<span className="show-on-small mt-1 mb-1"/>
 						<span className="p-1"/>
 						<a className="github-button" href={this.state.repository + "/subscription"}
 						   data-icon="octicon-eye" data-size="large" data-show-count="true"
