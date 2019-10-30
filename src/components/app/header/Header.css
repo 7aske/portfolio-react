@@ -6,26 +6,27 @@ header {
   background-repeat: no-repeat;
   overflow: hidden;
 }
-header video {
-  position: absolute;
-  height: 100vh;
-  top: 0;
-  right: 0;
+header .video-wrapper {
+  position: relative;
+  height: 50vh;
 }
-header .video-overlay {
+header .video-wrapper video {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+header .video-wrapper .video-overlay {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  top: 0;
-  right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
 header .name-container {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
-  height: 100vh;
   position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
+  height: 50vh;
   width: 100vw;
-  top: 50vh;
   border-top: 3px solid #232323;
 }
 header .name-container .name-image {
@@ -57,13 +58,19 @@ header .skills-container .container {
 }
 
 @media screen and (max-width: 540px) {
-  header .name-container {
-    margin-bottom: 6em;
+  header .video-wrapper {
+    height: 40vh;
   }
   header .skills-container {
     padding-top: 0;
   }
   header .skills-container a {
     font-size: 14px;
+  }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+  header .video-wrapper video {
+    top: 0;
+    width: 150vw;
   }
 }
