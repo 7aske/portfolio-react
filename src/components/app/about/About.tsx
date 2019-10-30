@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-
+import pdf from "../../../assets/pdf/resume.pdf";
 
 export class About extends React.Component {
 
@@ -80,7 +80,7 @@ export class About extends React.Component {
 						<div className="col s12 text-left">
 							<p className="pl-2 pt-5 pb-5 font-weight-bold">
 								Download a PDF copy of my resume
-								<a href="../../../assets/pdf/resume.pdf"><i className="fa fa-file m-1"> </i>here</a>.
+								<a href={pdf} className="orange-text text-darken-2"><i className="ml-1 material-icons mr-1">picture_as_pdf</i>here</a>.
 							</p>
 						</div>
 					</div>

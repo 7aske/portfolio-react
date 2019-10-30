@@ -17,10 +17,11 @@ type NavigationLinkState = {
 export class NavigationLink extends React.Component {
 	props: NavigationLinkProps;
 	state: NavigationLinkState;
-
+	private readonly magicNumber: number;
 	constructor(props: NavigationLinkProps) {
 		super(props);
 		this.props = props;
+		this.magicNumber = 205;
 		this.state = {href: props.href, name: props.name, icon: props.icon, target: props.target};
 	}
 
@@ -38,7 +39,7 @@ export class NavigationLink extends React.Component {
 			});
 		} else {
 			window.scroll({
-				top: element.offsetTop - 150,
+				top: element.offsetTop - this.magicNumber,
 				left: 0,
 				behavior: "smooth",
 			});

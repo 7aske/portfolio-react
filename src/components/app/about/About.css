@@ -4,3 +4,6 @@
 #about li {
   font-size: 18px;
 }
+#about a:hover {
+  color: white !important;
+}

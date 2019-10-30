@@ -1,3 +1,5 @@
+$border-color: #232323;
+
 .divider {
 	position: relative;
 	top: 0;
@@ -5,4 +7,5 @@
 	background: linear-gradient(rgba(0, 0, 0, 0.5),
 			rgba(0, 0, 0, 0.5)), url("../../../assets/images/namebg.png");
 	margin: 0;
+	border: 3px solid $border-color;
 }

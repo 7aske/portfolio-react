@@ -11,9 +11,11 @@ export class Navigation extends React.Component {
 	state: NavigationState;
 	// private header: HTMLDivElement;
 	private readonly navRef = React.createRef<HTMLDivElement>();
+	private readonly magicNumber: number;
 
 	constructor(props: any) {
 		super(props);
+		this.magicNumber = 264;
 		this.state = {links: navigationLinks};
 	}
 
@@ -37,24 +39,24 @@ export class Navigation extends React.Component {
 			} else {
 				this.navRef.current!.style.transform = "translateY(-65px)";
 			}
-			if (skillsTrigger < window.pageYOffset + 264) {
+			if (skillsTrigger < window.pageYOffset + this.magicNumber) {
 				buttons[0].classList.add("highlighted");
 			} else {
 				buttons[0].classList.remove("highlighted");
 			}
-			if (workTrigger < y) {
+			if (workTrigger < y - 2 * this.magicNumber) {
 				buttons[0].classList.remove("highlighted");
 				buttons[1].classList.add("highlighted");
 			} else {
 				buttons[1].classList.remove("highlighted");
 			}
-			if (aboutTrigger < y) {
+			if (aboutTrigger < y - this.magicNumber) {
 				buttons[1].classList.remove("highlighted");
 				buttons[2].classList.add("highlighted");
 			} else {
 				buttons[2].classList.remove("highlighted");
 			}
-			if (contactTrigger < y) {
+			if (contactTrigger < y - 2 * this.magicNumber) {
 				buttons[2].classList.remove("highlighted");
 				buttons[3].classList.add("highlighted");
 			} else {
@@ -67,9 +69,9 @@ export class Navigation extends React.Component {
 		return (
 			<nav ref={this.navRef}>
 				<div className="nav-wrapper grey darken-4 pl-2">
-					<a href="#" className="brand-logo left show-on-medium-and-up hide-on-small-and-down">Nikola
+					<a href="/" className="brand-logo left show-on-medium-and-up hide-on-small-and-down">Nikola
 						Tasic</a>
-					<a href="#" className="brand-logo left show-on-small hide-on-med-and-up">NT</a>
+					<a href="/" className="brand-logo left show-on-small hide-on-med-and-up">NT</a>
 					<ul className="right">
 						{this.state.links.map((link, index) =>
 							<NavigationLink href={link.href}
