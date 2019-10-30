@@ -12,7 +12,7 @@ export class Error404 extends React.Component {
 						<ul className="right">
 							<li><a href="http://blog.7aske.com" target="blank"
 								   className="nav-link animated slideInUp faster white-text font-weight-bold">
-								<span className="hide-on-med-and-down hide-on-small-and-down">Blog</span><i className="material-icons orange-text ml-0">local_cafe</i>
+								<span className="hide-on-med-and-down hide-on-small-and-down mr-2">Blog</span><i className="material-icons orange-text ml-0">local_cafe</i>
 							</a></li>
 						</ul>
 					</div>
@@ -20,7 +20,7 @@ export class Error404 extends React.Component {
 				<div className="container pt-5" style={{height:"100vh"}}>
 					<div className="p-2 pt-5 text-left text-white">
 						<h1 className="text mt-5 mb-5">¯\_( ͠° ͟ʖ ͠°)_/¯ <br className="hide-on-med-and-up show-on-medium-and-down"/> Not Found</h1>
-						<p>Looks like the page that you were looking for doesnt exist.</p>
+						<p style={{fontSize:"24px"}}>Looks like the page that you were looking for doesnt exist.</p>
 						<h4><a href="/" className="orange-text" >Go back</a></h4>
 					</div>
 				</div>
