@@ -1,3 +1,5 @@
+$orange-default: #ff9800;
+
 #contact {
 	input, textarea {
 		color: #f8f9fa;
@@ -6,6 +8,7 @@
 	.social-container {
 		display: flex;
 		justify-content: space-around;
+
 		a {
 			display: inline-block;
 			font-family: Ubuntu, serif;
@@ -21,6 +24,22 @@
 			padding: {
 				right: 10px;
 			};
+		}
+	}
+
+
+	/* label focus color */
+	.input-field {
+		input[type=text]:focus + label, input[type=email]:focus + label, textarea:focus + label {
+			color: $orange-default;
+		}
+	}
+
+	/* label underline focus color */
+	.input-field {
+		input[type=text]:focus, input[type=email]:focus, textarea:focus {
+			border-bottom: 1px solid $orange-default;
+			box-shadow: 0 1px 0 0 $orange-default;
 		}
 	}
 }

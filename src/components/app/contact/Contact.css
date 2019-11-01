@@ -1,3 +1,7 @@
+#contact {
+  /* label focus color */
+  /* label underline focus color */
+}
 #contact input, #contact textarea {
   color: #f8f9fa;
 }
@@ -15,4 +19,11 @@
 }
 #contact .social-container span {
   padding-right: 10px;
+}
+#contact .input-field input[type=text]:focus + label, #contact .input-field input[type=email]:focus + label, #contact .input-field textarea:focus + label {
+  color: #ff9800;
+}
+#contact .input-field input[type=text]:focus, #contact .input-field input[type=email]:focus, #contact .input-field textarea:focus {
+  border-bottom: 1px solid #ff9800;
+  box-shadow: 0 1px 0 0 #ff9800;
 }

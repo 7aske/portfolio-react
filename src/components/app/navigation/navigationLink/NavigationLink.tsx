@@ -23,6 +23,7 @@ export class NavigationLink extends React.Component {
 		this.props = props;
 		this.magicNumber = 205;
 		this.state = {href: props.href, name: props.name, icon: props.icon, target: props.target};
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	handleClick(ev: React.MouseEvent) {
