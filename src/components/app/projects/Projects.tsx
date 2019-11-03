@@ -25,7 +25,7 @@ const projects: ProjectType[] = [
 		username: "7aske",
 	}, {
 		img: py,
-		name: "deployment-server",
+		name: "instapy-bot",
 		description: "CLI bot for automated and scheduled Instagram photos uploading using instagrams private API. Uploading via private API was made possible by using slightly modified version of instapy-cli by b3nab.",
 		repository: "https://github.com/7aske/instapy-bot",
 		username: "7aske",

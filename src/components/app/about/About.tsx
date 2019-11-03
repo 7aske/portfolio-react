@@ -3,12 +3,6 @@ import "./About.css";
 import pdf from "../../../assets/pdf/resume.pdf";
 
 export default class About extends React.Component {
-
-	constructor(props: any) {
-		super(props);
-		this.state = {};
-	}
-
 	render() {
 		return (
 			<div id="about">
@@ -18,27 +12,16 @@ export default class About extends React.Component {
 							<h3 className="mt-3 text-left mt-1">Short</h3>
 							<p className="about-text text-justify">
 								Hi, my name is Nikola born on 24th of May 1995. I am your standard garden variety
-								software
-								nerd.
-								That means if something has computer code in it I had already read about it or tried to
-								implement it myself. Among the huge range of my interests I would emphasize the Web,
-								networks
-								and scripting languages as my strong points. Regarding Web development I had written
-								servers
-								in
-								5 languages so far but I tend to default to Node.js for my day to day needs. As for
-								programming
-								my go to languages are GoLang and Python. I decent knowledge of Java and
-								have recently started learning C/C++. Also I'm a Linux user and a big fan of Arch
-								distros.
-								Aside from
-								programming I do documentary photography and my photos are regularly uploaded to
-								Instagram
-								by my
-								Python bot. Cycling is my go-to relaxation activity, helps me clear my head to solve
-								difficulties easier. I think I am honest, enthusiastic, easy to work with and more than
-								willing
-								to think outside of the box to solve any problem.
+								software nerd. That means if something has computer code in it, I have already read about it or tried to
+								implement it myself. Among the huge range of my interests I would emphasize the server programming,
+								networking and scripting languages as my strong points. Regarding Web development I had written
+								servers in 6 technologies so far but I tend to default to Express.js or Flask for my day to day needs. As for
+								programming my go to languages are Go, C and Python. I have decent knowledge of Java and some others.
+								Also I'm a Linux user and a big fan of Arch which I have installed on multiple machines.
+								Aside from programming I do documentary photography and my photos are regularly uploaded to
+								Instagram by my Python bot. Cycling is my go-to relaxation activity, helps me clear my head so I can solve
+								problems better. I think I am honest, enthusiastic, easy to work with and more than willing to think outside
+								of the box to solve any problem.
 							</p>
 						</div>
 					</div>
