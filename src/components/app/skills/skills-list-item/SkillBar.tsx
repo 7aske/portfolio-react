@@ -8,7 +8,7 @@ type SkillBarState = {
 	level: number;
 }
 
-export class SkillBar extends React.Component {
+export default class SkillBar extends React.Component {
 	state: SkillBarState;
 	props: SkillBarType;
 	private readonly ref: React.RefObject<HTMLDivElement>;

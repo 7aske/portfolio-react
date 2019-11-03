@@ -1,12 +1,12 @@
 import React from "react";
 import py from "../../../assets/images/lang/python.png";
-import cpp from "../../../assets/images/lang/c++.png";
 import go from "../../../assets/images/lang/golang.png";
 import ts from "../../../assets/images/lang/ts.png";
 import js from "../../../assets/images/lang/js.png";
 import c from "../../../assets/images/lang/c.png";
 import java from "../../../assets/images/lang/java.png";
-import { ProjectList } from "./project-list/ProjectList";
+// import cpp from "../../../assets/images/lang/c++.png";
+import ProjectList from "./project-list/ProjectList";
 
 export type ProjectType = {
 	img: string;
@@ -68,7 +68,7 @@ const projects: ProjectType[] = [
 	},
 ];
 
-export class Projects extends React.Component {
+export default class Projects extends React.Component {
 	render() {
 		return (
 			<div id="projects">

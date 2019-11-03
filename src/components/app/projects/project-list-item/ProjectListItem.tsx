@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { ProjectType } from "../Projects";
 import "./ProjectListItem.css";
 
@@ -7,7 +7,7 @@ type ProjectListItemProps = {
 };
 
 
-export class ProjectListItem extends React.Component {
+export default class ProjectListItem extends React.Component {
 	state: ProjectType;
 	props: ProjectListItemProps;
 	private readonly imageRef = React.createRef<HTMLImageElement>();
@@ -30,11 +30,11 @@ export class ProjectListItem extends React.Component {
 				const y = window.pageYOffset + 132;
 				const barPos = window.scrollY + this.imageRef.current!.getBoundingClientRect().top - window.innerHeight;
 				if (y > barPos + window.innerHeight) {
-					this.imageRef!.current!.classList.remove("tada");
+					this.imageRef!.current!.classList.remove("pulse");
 				} else if (y < barPos) {
-					this.imageRef!.current!.classList.remove("tada");
+					this.imageRef!.current!.classList.remove("pulse");
 				} else {
-					this.imageRef.current!.classList.add("tada");
+					this.imageRef.current!.classList.add("pulse");
 				}
 			});
 		}

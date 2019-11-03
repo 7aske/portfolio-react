@@ -1,6 +1,6 @@
 import React from "react";
-import { SkillsSubListItem, SkillsSubListItemType } from "../skills-list-subitem/SkillsSubListItem";
-import { SkillBar } from "./SkillBar";
+import SkillsSubListItem, { SkillsSubListItemType } from "../skills-list-subitem/SkillsSubListItem";
+import SkillBar from "./SkillBar";
 import "./SkillListItem.css"
 
 export type SkillsListItemType = {
@@ -13,7 +13,7 @@ type SkillsListItemProps = {
 	skill: SkillsListItemType;
 }
 
-export class SkillsListItem extends React.Component {
+export default class SkillsListItem extends React.Component {
 	state: SkillsListItemType;
 	props: SkillsListItemProps;
 

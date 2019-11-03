@@ -1,6 +1,6 @@
 import React from "react";
 
-export class Error404 extends React.Component {
+export default class Success200 extends React.Component {
 	render() {
 		return (
 			<div>
@@ -19,8 +19,8 @@ export class Error404 extends React.Component {
 				</nav>
 				<div className="container pt-5" style={{height:"100vh"}}>
 					<div className="p-2 pt-5 text-left text-white">
-						<h1 className="text mt-5 mb-5">¯\_( ͠° ͟ʖ ͠°)_/¯ <br className="hide-on-med-and-up show-on-medium-and-down"/> Not Found</h1>
-						<p style={{fontSize:"24px"}}>Looks like the page that you were looking for doesnt exist.</p>
+						<h1 className="text mt-5 mb-5">( ͡^ ͜ʖ ͡^ ) <br className="hide-on-med-and-up show-on-medium-and-down"/><small>OK 200</small></h1>
+						<p style={{fontSize:"24px"}}>You message has been sent. Check out more of my awesome <a href="/#projects" className="orange-text">projects</a>.</p>
 						<h4><a href="/" className="orange-text" >Go back</a></h4>
 					</div>
 				</div>

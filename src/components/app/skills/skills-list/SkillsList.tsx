@@ -1,5 +1,5 @@
 import React from "react";
-import { SkillsListItem, SkillsListItemType } from "../skills-list-item/SkillsListItem";
+import SkillsListItem, { SkillsListItemType } from "../skills-list-item/SkillsListItem";
 import "./SkillsList.css";
 
 type SkillsListType = {
@@ -8,7 +8,7 @@ type SkillsListType = {
 };
 
 
-export class SkillsList extends React.Component {
+export default class SkillsList extends React.Component {
 	state: SkillsListType;
 	props: SkillsListType;
 

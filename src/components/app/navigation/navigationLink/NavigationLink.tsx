@@ -5,19 +5,20 @@ type NavigationLinkProps = {
 	href: string;
 	name: string;
 	icon: string;
-	target?: string;
+	target: string | undefined;
 }
 type NavigationLinkState = {
 	href: string;
 	name: string;
 	icon: string;
-	target?: string;
+	target: string | undefined;
 }
 
-export class NavigationLink extends React.Component {
+export default class NavigationLink extends React.Component {
 	props: NavigationLinkProps;
 	state: NavigationLinkState;
 	private readonly magicNumber: number;
+
 	constructor(props: NavigationLinkProps) {
 		super(props);
 		this.props = props;
@@ -50,9 +51,10 @@ export class NavigationLink extends React.Component {
 	render() {
 		return (
 			<li><a onClick={this.handleClick} href={this.state.href} target={this.state.target}
-			   data-scrollto={this.state.href.startsWith("#") ? this.state.href : ""}
-			   className="nav-link animated slideInUp faster white-text font-weight-bold">
-				<span className="hide-on-med-and-down hide-on-small-and-down">{this.state.name}</span><i className="material-icons orange-text">{this.state.icon}</i>
+				   data-scrollto={this.state.href.startsWith("#") ? this.state.href : ""}
+				   className="nav-link animated slideInUp faster white-text font-weight-bold">
+				<span className="hide-on-med-and-down hide-on-small-and-down">{this.state.name}</span><i
+				className="material-icons orange-text">{this.state.icon}</i>
 			</a></li>
 		);
 	}

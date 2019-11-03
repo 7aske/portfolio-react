@@ -1,13 +1,13 @@
 import React from "react";
 import "./Navigation.css";
 import { HeaderHref, navigationLinks } from "../header/Header";
-import { NavigationLink } from "./navigationLink/NavigationLink";
+import NavigationLink from "./navigationLink/NavigationLink";
 
 type NavigationState = {
 	links: HeaderHref[];
 };
 
-export class Navigation extends React.Component {
+export default class Navigation extends React.Component {
 	state: NavigationState;
 	// private header: HTMLDivElement;
 	private readonly navRef = React.createRef<HTMLDivElement>();
@@ -35,9 +35,11 @@ export class Navigation extends React.Component {
 		document.addEventListener("scroll", () => {
 			let y = window.pageYOffset + 132;
 			if (sliderBottom < y) {
-				this.navRef.current!.style.transform = "translateY(65px)";
+				if (this.navRef.current)
+					this.navRef.current.style.transform = "translateY(65px)";
 			} else {
-				this.navRef.current!.style.transform = "translateY(-65px)";
+				if (this.navRef.current)
+					this.navRef.current.style.transform = "translateY(-65px)";
 			}
 			if (skillsTrigger < window.pageYOffset + this.magicNumber) {
 				buttons[0].classList.add("highlighted");

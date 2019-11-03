@@ -4,7 +4,7 @@ import profileVideo from "../../../assets/video/header.mp4";
 import "./Header.css";
 import "../../helpers.css";
 import "../../../../node_modules/materialize-css/dist/css/materialize.min.css";
-import { HeaderLink } from "./headerLink/HeaderLink";
+import HeaderLink from "./headerLink/HeaderLink";
 
 export const navigationLinks:HeaderHref[] = [{
 	name: "Skills",
@@ -40,7 +40,7 @@ type HeaderState = {
 	links: HeaderHref[];
 }
 
-export class Header extends React.Component {
+export default class Header extends React.Component {
 	state: HeaderState;
 
 	constructor(props: any) {

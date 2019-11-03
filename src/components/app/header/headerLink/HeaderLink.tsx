@@ -5,19 +5,20 @@ type HeaderLinkProps = {
 	href: string;
 	name: string;
 	icon: string;
-	target?: string;
+	target: string | undefined;
 }
 type HeaderLinkState = {
 	href: string;
 	name: string;
 	icon: string;
-	target?: string;
+	target: string | undefined;
 }
 
-export class HeaderLink extends React.Component {
+export default class HeaderLink extends React.Component {
 	props: HeaderLinkProps;
 	state: HeaderLinkState;
 	private readonly magicNumber: number;
+
 	constructor(props: HeaderLinkProps) {
 		super(props);
 		this.props = props;
@@ -31,7 +32,7 @@ export class HeaderLink extends React.Component {
 		if (!target.attributes.getNamedItem("data-scrollto")!.value.startsWith("#"))
 			return true;
 		ev.preventDefault();
-		let element = document.querySelector(target.attributes.getNamedItem("data-scrollto")!.value) as HTMLDivElement;
+		let element = document.querySelector(target.attributes.getNamedItem("data-scrollto")!.value) as HTMLDivElement | null;
 		if (element == null) {
 			window.scroll({
 				top: 0,

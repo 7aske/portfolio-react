@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "es6",
+        "module": "commonjs",
+        "lib": ["es2015"],
+         "allowJs": false,
+        "sourceMap": false,
+        "outDir": "../build",
+        "rootDir": "./",
+         "removeComments": true,
+        "downlevelIteration": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": false,
+        "strictFunctionTypes": true,
+        "strictPropertyInitialization": false,
+        "forceConsistentCasingInFileNames": true,
+         "moduleResolution": "node",
+        "esModuleInterop": true
+    }
+}

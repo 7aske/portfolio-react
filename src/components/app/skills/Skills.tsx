@@ -1,5 +1,5 @@
 import React from "react";
-import { SkillsList } from "./skills-list/SkillsList";
+import SkillsList from "./skills-list/SkillsList";
 
 const skills1 = [{
 	name: "JavaScript",
@@ -45,7 +45,7 @@ const skills2 = [{
 	sublist: [],
 }];
 
-export class Skills extends React.Component {
+export default class Skills extends React.Component {
 	render() {
 		return (
 			<div id="skills">

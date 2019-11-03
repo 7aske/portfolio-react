@@ -1,10 +1,11 @@
 import React from "react";
+import axios from "axios";
 import "../../../../node_modules/font-awesome/css/font-awesome.css";
 import "./Contact.css";
 
 type ContactProps = {};
 
-export class Contact extends React.Component {
+export default class Contact extends React.Component {
 	props: ContactProps;
 	private readonly formRef: React.RefObject<HTMLFormElement>;
 	private readonly requireInputs: boolean;
@@ -14,71 +15,38 @@ export class Contact extends React.Component {
 		this.props = props;
 		this.formRef = React.createRef();
 		this.onSubmit = this.onSubmit.bind(this);
-		this.requireInputs = false;
+		this.sendMail = this.sendMail.bind(this);
+		this.requireInputs = true;
 	}
 
-	async sendMail(name: string, email: string, body: string) {
-	}
-
-	htmlTemplate(name: string, email: string, body: string): string {
-		return `<!doctype html>
-				<html lang="en">
-				<head>
-				    <style>
-				        body, html {
-				            margin: 0;
-				            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-				            color: #404040;
-				            font-size: 14px;
-				            font-weight: 300;
-				            line-height: 22px;
-				            letter-spacing: .4px;
-				            background: #eee;
-				            padding: 30px 0 0;
-				            text-align: center;
-				        }
-				        .card {
-				            text-align: left;
-				            min-width: 300px;
-				            max-width: 800px;
-				            margin: 20px;
-				            display: inline-block;
-				            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
-				            position: relative;
-				            transition: all .2s ease-in-out;
-				        }
-				        .card:hover {
-				            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-				            margin-bottom: 54px;
-				        }
-				        .text {
-				            background: #FFF;
-				            padding: 20px;
-				            min-height: 60px;
-				        }
-				    </style>
-				</head>
-				<body>
-				    <div class="card">
-				        <div class="text">
-				            <h2>${name}</h2>
-				            <h3><a href="mailto:${email}?body=Response"><i>${email}</i></a></h3>
-				            <p>
-				                ${body}
-				            </p>
-				        </div>
-				    </div>
-				</body>
-				</html>`;
+	async sendMail(name: string, email: string, message: string) {
+		const url = new URL(window.location.href);
+		url.port = (window.location.port === "0" || window.location.port === "") ? "80" : window.location.port;
+		url.pathname = "/mail/send";
+		try {
+			const res = await axios.post(url.href, {
+				name,
+				email,
+				message,
+			});
+			if (res.status === 200) {
+				window.location.pathname = "/200";
+			}
+		} catch (e) {
+			if (e.response.status === 429){
+				window.location.pathname = "/429";
+			}
+		}
 	}
 
 	onSubmit(event: React.FormEvent) {
+		event.preventDefault();
 		const form = this.formRef.current as HTMLFormElement;
 		const name = (form[0] as HTMLInputElement).value;
 		const email = (form[1] as HTMLInputElement).value;
 		const message = (form[2] as HTMLInputElement).value;
 		this.sendMail(name, email, message).then(res => console.log(res)).catch(err => console.error(err));
-		event.preventDefault();
+		return false;
 	}
 
 	render() {

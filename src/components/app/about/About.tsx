@@ -2,7 +2,7 @@ import React from "react";
 import "./About.css";
 import pdf from "../../../assets/pdf/resume.pdf";
 
-export class About extends React.Component {
+export default class About extends React.Component {
 
 	constructor(props: any) {
 		super(props);

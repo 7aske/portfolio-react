@@ -4,7 +4,7 @@ export type SkillsSubListItemType = {
 	name: string;
 }
 
-export class SkillsSubListItem extends React.Component {
+export default class SkillsSubListItem extends React.Component {
 	state: SkillsSubListItemType;
 	props: SkillsSubListItemType;
 	constructor(props: SkillsSubListItemType) {

@@ -4,7 +4,7 @@ type DividerPropsAndState = {
 	title: string;
 }
 
-export class Divider extends React.Component {
+export default class Divider extends React.Component {
 	state: DividerPropsAndState;
 	props: DividerPropsAndState;
 

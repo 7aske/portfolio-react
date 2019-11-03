@@ -1,0 +1,10 @@
+{
+    "watch": ["build"],
+    "ext": "js",
+    "ignore": ["build/static"],
+    "cwd": "build",
+    "env": {
+        "NODE_ENV": "dev"
+    },
+    "exec": "node build/server.js"
+}
