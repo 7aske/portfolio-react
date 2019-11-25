@@ -23,6 +23,12 @@ const projects: ProjectType[] = [
 		description: "Docker-like linux chroot container system with ability to build your custom containers to run apps in",
 		repository: "https://github.com/7aske/ccont",
 		username: "7aske",
+	},{
+		img: c,
+		name: "agame",
+		description: "SDL2 game with fancy graphics, smart-ish enemies and randomly generated mazes",
+		repository: "https://github.com/7aske/agame",
+		username: "7aske",
 	}, {
 		img: py,
 		name: "instapy-bot",
