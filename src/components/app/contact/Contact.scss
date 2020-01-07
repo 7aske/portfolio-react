@@ -1,4 +1,4 @@
-$orange-default: #ff9800;
+$deep-purple-default: #ff9800;
 
 #contact {
 	input, textarea {
@@ -31,15 +31,15 @@ $orange-default: #ff9800;
 	/* label focus color */
 	.input-field {
 		input[type=text]:focus + label, input[type=email]:focus + label, textarea:focus + label {
-			color: $orange-default;
+			color: $deep-purple-default;
 		}
 	}
 
 	/* label underline focus color */
 	.input-field {
 		input[type=text]:focus, input[type=email]:focus, textarea:focus {
-			border-bottom: 1px solid $orange-default;
-			box-shadow: 0 1px 0 0 $orange-default;
+			border-bottom: 1px solid $deep-purple-default;
+			box-shadow: 0 1px 0 0 $deep-purple-default;
 		}
 	}
 }

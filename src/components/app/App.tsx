@@ -12,7 +12,7 @@ import Error429 from "./routes/errors/Error429";
 
 function App() {
 	return (
-		<main className="App grey darken-3">
+		<main className="App" style={{backgroundColor:"#181818"}}>
 			<BrowserRouter>
 				<Switch>
 					<Route exact path="/" component={Home}/>

@@ -52,7 +52,7 @@ export default class Header extends React.Component {
 
 	render() {
 		return (
-			<header id="top">
+			<header className="container" id="top">
 				<div className="video-wrapper">
 					<video autoPlay muted loop className="hide-on-small-and-down">
 						<source src={profileVideo} type="video/mp4"/>
@@ -63,7 +63,7 @@ export default class Header extends React.Component {
 					<div className="name-image animated slideInDown">
 						<img src={profile} alt="profile"/>
 					</div>
-					<h3 className="name-title orange-text">Nikola Tasic</h3>
+					<h3 className="name-title deep-purple-text text-lighten-2">Nikola Tasic</h3>
 					<h4 className="name-text white-text">IT Enthusiast</h4>
 					<div className="skills-container grey darken-3">
 						<div className="row">

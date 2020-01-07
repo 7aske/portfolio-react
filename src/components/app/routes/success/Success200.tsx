@@ -12,7 +12,7 @@ export default class Success200 extends React.Component {
 						<ul className="right">
 							<li><a href="http://blog.7aske.com" target="blank"
 								   className="nav-link animated slideInUp faster white-text font-weight-bold">
-								<span className="hide-on-med-and-down hide-on-small-and-down mr-2">Blog</span><i className="material-icons orange-text ml-0">local_cafe</i>
+								<span className="hide-on-med-and-down hide-on-small-and-down mr-2">Blog</span><i className="material-icons deep-purple-text text-lighten-2 ml-0">local_cafe</i>
 							</a></li>
 						</ul>
 					</div>
@@ -20,8 +20,8 @@ export default class Success200 extends React.Component {
 				<div className="container pt-5" style={{height:"100vh"}}>
 					<div className="p-2 pt-5 text-left text-white">
 						<h1 className="text mt-5 mb-5">( ͡^ ͜ʖ ͡^ ) <br className="hide-on-med-and-up show-on-medium-and-down"/><small>OK 200</small></h1>
-						<p style={{fontSize:"24px"}}>You message has been sent. Check out more of my awesome <a href="/#projects" className="orange-text">projects</a>.</p>
-						<h4><a href="/" className="orange-text" >Go back</a></h4>
+						<p style={{fontSize:"24px"}}>You message has been sent. Check out more of my awesome <a href="/#projects" className="deep-purple-text text-lighten-2">projects</a>.</p>
+						<h4><a href="/" className="deep-purple-text text-lighten-2" >Go back</a></h4>
 					</div>
 				</div>
 			</div>

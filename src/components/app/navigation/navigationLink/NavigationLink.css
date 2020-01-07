@@ -17,11 +17,11 @@ nav li .nav-link i {
   font-size: 24px;
 }
 nav li .nav-link:hover {
-  border-bottom: 3px solid orange;
+  border-bottom: 3px solid rebeccapurple;
   background-color: rgba(0, 0, 0, 0.5);
 }
 nav li .highlighted {
-  border-bottom: 3px solid orange;
+  border-bottom: 3px solid rebeccapurple;
   background-color: rgba(0, 0, 0, 0.5);
 }
 

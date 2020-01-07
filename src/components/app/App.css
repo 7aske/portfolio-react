@@ -9,6 +9,7 @@ body, html {
   background-color: #212121;
 }
 
+
 @media screen and (max-width: 540px) {
   .container {
     width: 100% !important;

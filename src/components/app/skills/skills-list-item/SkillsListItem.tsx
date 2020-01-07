@@ -26,7 +26,7 @@ export default class SkillsListItem extends React.Component {
 	render() {
 		return (
 			<li className="skill-list-item collection-item-header text-left white-text">
-				<i className="material-icons orange-text">chevron_right</i>
+				<i className="material-icons deep-purple-text text-lighten-2">chevron_right</i>
 				<span>{this.state.name}</span>
 				<SkillBar level={this.state.skillLevel}/>
 				<ul className="collection">

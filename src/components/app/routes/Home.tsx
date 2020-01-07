@@ -13,7 +13,7 @@ export default class Home extends React.Component {
 			<div>
 				<Navigation/>
 				<Header/>
-				<Divider title="Skills"/>
+				<Divider title="Skills*"/>
 				<Skills/>
 				<Divider title="Projects"/>
 				<Projects/>

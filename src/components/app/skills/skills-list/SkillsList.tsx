@@ -24,7 +24,7 @@ export default class SkillsList extends React.Component {
 	render() {
 		return (
 			<div className="skills-list">
-				<h4 className="orange-text">{this.state.title}</h4>
+				<h4 className="deep-purple-text text-lighten-2">{this.state.title}</h4>
 				<ul className="collection with-header">
 					{this.state.skills.map((skill, index) => <SkillsListItem skill={skill} key={index} />)}
 				</ul>

@@ -16,8 +16,10 @@ export default class Divider extends React.Component {
 
 	render() {
 		return (
+			<div className="container">
 			<div className="divider grey darken-4 p-5">
-				<h4 className="orange-text mt-3">{this.state.title}</h4>
+				<h4 className="deep-purple-text text-lighten-2 mt-3">{this.state.title}</h4>
+			</div>
 			</div>
 		);
 	}

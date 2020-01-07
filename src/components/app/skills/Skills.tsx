@@ -2,6 +2,10 @@ import React from "react";
 import SkillsList from "./skills-list/SkillsList";
 
 const skills1 = [{
+	name: "C",
+	skillLevel: 70,
+	sublist: [],
+}, {
 	name: "JavaScript",
 	skillLevel: 80,
 	sublist: [{name: "node.js"}, {name: "React.js"}, {name: "electron.js"}, {name: "express.js"}],
@@ -9,6 +13,10 @@ const skills1 = [{
 	name: "Python",
 	skillLevel: 75,
 	sublist: [{name: "Flask"}],
+}, {
+	name: "Rust",
+	skillLevel: 40,
+	sublist: [],
 }, {
 	name: "GoLang",
 	skillLevel: 65,
@@ -18,8 +26,8 @@ const skills1 = [{
 	skillLevel: 70,
 	sublist: [{name: "Spring Boot"}, {name: "Thymeleaf"}],
 }, {
-	name: "C/C++",
-	skillLevel: 60,
+	name: "C++",
+	skillLevel: 50,
 	sublist: [],
 }, {
 	name: "C#",
@@ -43,6 +51,10 @@ const skills2 = [{
 	name: "MS Office",
 	skillLevel: 80,
 	sublist: [],
+}, {
+	name: "Shell",
+	skillLevel: 60,
+	sublist: [{name: "Bash"}],
 }];
 
 export default class Skills extends React.Component {
@@ -57,6 +69,10 @@ export default class Skills extends React.Component {
 						<div className="col m6 s12">
 							<SkillsList skills={skills2} title="Other"/>
 						</div>
+					</div>
+					<div className="text-left pl-3 pb-2">
+						<small className="text-white">* Skill meters are the relative measure of how confident I am in
+							working with a given tech.<br/>&nbsp; They dont represent any real measurement.</small>
 					</div>
 				</div>
 			</div>

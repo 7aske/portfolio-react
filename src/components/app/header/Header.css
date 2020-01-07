@@ -27,7 +27,6 @@ header .name-container {
   position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../../../assets/images/namebg.png");
   height: 50vh;
-  width: 100vw;
   border-top: 5px solid #343434;
 }
 header .name-container .name-image {

@@ -83,7 +83,7 @@ export default class Contact extends React.Component {
 								<label className="active" htmlFor="message">Message</label>
 							</div>
 						</div>
-						<button className="btn waves-effect waves-light orange black-text" type="submit"
+						<button className="btn waves-effect waves-light deep-purple lighten-2 grey-text text-darken-4" type="submit"
 								name="action">Send
 							<i className="material-icons right">send</i>
 						</button>
@@ -95,7 +95,7 @@ export default class Contact extends React.Component {
 							<a
 								href="https://github.com/7aske"
 								target="blank"
-								className="waves-effect waves-light btn orange black-text">
+								className="waves-effect waves-light btn deep-purple lighten-2 grey-text text-darken-4">
 								<span className="network-name">GitHub</span>
 								<i className="fa fa-github">
 								</i>
@@ -103,7 +103,7 @@ export default class Contact extends React.Component {
 							<a
 								href="https://www.facebook.com/7aske"
 								target="blank"
-								className="waves-effect waves-light btn orange black-text">
+								className="waves-effect waves-light btn deep-purple lighten-2 grey-text text-darken-4">
 								<span className="network-name">Facebook</span>
 								<i className="fa fa-facebook">
 								</i>
@@ -111,7 +111,7 @@ export default class Contact extends React.Component {
 							<a
 								href="https://www.linkedin.com/in/nikola-tasi%C4%87-87b8bb115/"
 								target="blank"
-								className="waves-effect waves-light btn orange black-text">
+								className="waves-effect waves-light btn deep-purple lighten-2 grey-text text-darken-4">
 								<span className="network-name">LinkedIn</span>
 								<i className="fa fa-linkedin">
 								</i>

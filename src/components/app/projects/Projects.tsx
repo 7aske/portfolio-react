@@ -1,6 +1,7 @@
 import React from "react";
 import py from "../../../assets/images/lang/python.png";
 import go from "../../../assets/images/lang/golang.png";
+import rust from "../../../assets/images/lang/rust.png";
 import ts from "../../../assets/images/lang/ts.png";
 import js from "../../../assets/images/lang/js.png";
 import c from "../../../assets/images/lang/c.png";
@@ -48,10 +49,10 @@ const projects: ProjectType[] = [
 		repository: "https://github.com/7aske/boat",
 		username: "7aske",
 	}, {
-		img: c,
-		name: "cgs",
-		description: "cgs (check-git-status) is a simple tool for us forgetful people. Namely what the tool does is checks a folder with git repositories for ones that have been changed but not committed. All that to avoid unnecessary merges and conflicts.",
-		repository: "https://github.com/7aske/cgs",
+		img: rust,
+		name: "rgs",
+		description: "rgs (recheck-git-status) is a simple tool for us forgetful people. Namely what the tool does is checks a folder with git repositories for ones that have been changed but not committed. All that to avoid unnecessary merges and conflicts. Originally cgs, written in C.",
+		repository: "https://github.com/7aske/rgs",
 		username: "7aske",
 	}, {
 		img: java,
@@ -63,7 +64,7 @@ const projects: ProjectType[] = [
 		img: ts,
 		name: "web-shop",
 		description: "This is a work-in-progress simple web-shop completely designed and built from scratch using as least as possible frameworks for simplicity.",
-		repository: "https://github.com/7aske/web-shop",
+		repository: "https://github.com/7aske/web-swehop",
 		username: "7aske",
 	},
 ];
@@ -74,7 +75,7 @@ export default class Projects extends React.Component {
 			<div id="projects">
 				<div className="container grey darken-4">
 					<div className="row pt-5 mb-0">
-						<h5 className="text-white mt-0 pt-0 mb-5">Here are listed some of the more notable projects I worked
+						<h5 className="text-white mt-0 pt-0 mb-5">Here listed are some of the more notable projects I worked
 							on:</h5>
 						<div className="col s12">
 							<ProjectList projects={projects}/>

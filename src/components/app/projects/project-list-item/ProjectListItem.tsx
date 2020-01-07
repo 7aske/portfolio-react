@@ -47,8 +47,8 @@ export default class ProjectListItem extends React.Component {
 					<img ref={this.imageRef} className="animated" src={this.state.img} alt="project"/>
 				</div>
 				<div className="col m10 s12 description">
-					<span className="title orange-text">
-						<a className="orange-text"
+					<span className="title deep-purple-text text-lighten-2">
+						<a className="deep-purple-text text-lighten-2"
 						   href={this.state.repository}
 						   target="blank">{this.state.name}
 						</a>

@@ -54,7 +54,7 @@ export default class NavigationLink extends React.Component {
 				   data-scrollto={this.state.href.startsWith("#") ? this.state.href : ""}
 				   className="nav-link animated slideInUp faster white-text font-weight-bold">
 				<span className="hide-on-med-and-down hide-on-small-and-down">{this.state.name}</span><i
-				className="material-icons orange-text">{this.state.icon}</i>
+				className="material-icons deep-purple-text text-lighten-2">{this.state.icon}</i>
 			</a></li>
 		);
 	}

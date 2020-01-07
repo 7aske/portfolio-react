@@ -41,7 +41,7 @@ export default class SkillBar extends React.Component {
 	render() {
 		return (
 			<div ref={this.ref} className="skill-bar">
-				<div className="skill-fill orange darken-1" />
+				<div className="skill-fill deep-purple lighten-2darken-1" />
 			</div>
 		);
 	}

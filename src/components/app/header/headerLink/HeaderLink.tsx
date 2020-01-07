@@ -53,7 +53,7 @@ export default class HeaderLink extends React.Component {
 			<a onClick={this.handleClick} href={this.state.href} target={this.state.target}
 			   data-scrollto={this.state.href.startsWith("#") ? this.state.href : ""}
 			   className="skill animated slideInUp faster white-text font-weight-bold">
-				<i className="material-icons orange-text">{this.state.icon}</i><br/>{this.state.name}
+				<i className="material-icons deep-purple-text text-lighten-2">{this.state.icon}</i><br/>{this.state.name}
 			</a>
 		);
 	}
