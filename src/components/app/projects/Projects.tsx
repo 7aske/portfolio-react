@@ -24,11 +24,17 @@ const projects: ProjectType[] = [
 		description: "Docker-like linux chroot container system with ability to build your custom containers to run apps in",
 		repository: "https://github.com/7aske/ccont",
 		username: "7aske",
-	},{
+	}, {
 		img: c,
 		name: "agame",
 		description: "SDL2 game with fancy graphics, smart-ish enemies and randomly generated mazes",
 		repository: "https://github.com/7aske/agame",
+		username: "7aske",
+	}, {
+		img: c,
+		name: "c_orm",
+		description: "Auto generating C headers for a given DDL(database scheme) with generated functions for each to quickly bootstrap CRUD applications. Example project representing a system of libraries and their books.",
+		repository: "https://github.com/7aske/c_library_orm",
 		username: "7aske",
 	}, {
 		img: py,
@@ -60,19 +66,21 @@ const projects: ProjectType[] = [
 		description: "rgs (recheck-git-status) is a simple tool for us forgetful people. Namely what the tool does is checks a folder with git repositories for ones that have been changed but not committed. All that to avoid unnecessary merges and conflicts. Originally cgs, written in C.",
 		repository: "https://github.com/7aske/rgs",
 		username: "7aske",
-	}, {
-		img: java,
-		name: "messaging-system",
-		description: "University project messaging system built from ground up in Java",
-		repository: "https://github.com/7aske/messaging-system",
-		username: "7aske",
-	}, {
-		img: ts,
-		name: "web-shop",
-		description: "This is a work-in-progress simple web-shop completely designed and built from scratch using as least as possible frameworks for simplicity.",
-		repository: "https://github.com/7aske/web-swehop",
-		username: "7aske",
 	},
+	// , {
+	// 	img: java,
+	// 	name: "messaging-system",
+	// 	description: "University project messaging system built from ground up in Java",
+	// 	repository: "https://github.com/7aske/messaging-system",
+	// 	username: "7aske",
+	// }
+	// , {
+	// 	img: ts,
+	// 	name: "web-shop",
+	// 	description: "This is a work-in-progress simple web-shop completely designed and built from scratch using as least as possible frameworks for simplicity.",
+	// 	repository: "https://github.com/7aske/web-swehop",
+	// 	username: "7aske",
+	// },
 ];
 
 export default class Projects extends React.Component {
@@ -81,7 +89,8 @@ export default class Projects extends React.Component {
 			<div id="projects">
 				<div className="container grey darken-4">
 					<div className="row pt-5 mb-0">
-						<h5 className="text-white mt-0 pt-0 mb-5">Here listed are some of the more notable projects I worked
+						<h5 className="text-white mt-0 pt-0 mb-5">Here listed are some of the more notable projects I
+							worked
 							on:</h5>
 						<div className="col s12">
 							<ProjectList projects={projects}/>
