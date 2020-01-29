@@ -36,7 +36,7 @@
     "start": "npm run start-server",
     "start-dev": "react-scripts start",
     "build-server": "tsc --build server-src/tsconfig.json",
-    "build": "npm run build-server && react-scripts build",
+    "build": "react-scripts build && npm run build-server",
     "start-server-dev": "nodemon --config nodemon.json",
     "start-server": "node build/server.js"
   },
