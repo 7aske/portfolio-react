@@ -1,11 +1,10 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import hljs from "highlight.js";
-import "../../../../../node_modules/highlight.js/styles/darcula.css";
-import { pageNav, parseAnchors, socialFmt } from "../../utils/Utils";
-// import { firstNameFiglet, lastNameFiglet } from "../../static/Figlets";
+import { pageNav, socialFmt } from "../../utils/Utils";
 import { socialMedia } from "../../static/Social";
 import { greetingMessage } from "../../static/Home";
+import { ThemeContext } from "../../components/styling/ThemeContext";
+import { hlight } from "../../utils/Highlighter";
 
 // language=TEXT
 let sourceCode = `#include <stdio.h>
@@ -31,21 +30,29 @@ type HomeState = {
 };
 
 
-export default class Home extends React.Component<HomeProps, HomeState> {
+class Home extends React.Component<HomeProps, HomeState> {
 	ref: RefObject<HTMLPreElement>;
 
 	constructor(props: HomeProps) {
 		super(props);
 		this.ref = createRef();
 		this.state = {source: sourceCode};
-
 	}
 
 	componentDidMount(): void {
+		this.highlight();
+	}
+
+	componentDidUpdate(): void {
+		this.highlight();
+	}
+
+	highlight() {
 		if (this.ref.current) {
-			let highlighted = hljs.highlight("c", sourceCode).value;
-			highlighted = parseAnchors(highlighted);
-			this.ref.current.innerHTML = highlighted;
+			this.ref.current.innerHTML = hlight(sourceCode, {
+				language: this.context.language,
+				classPrefix: this.context.theme,
+			});
 		}
 	}
 
@@ -56,4 +63,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
 			</div>
 		);
 	};
-};
+}
+
+Home.contextType = ThemeContext;
+export default Home;

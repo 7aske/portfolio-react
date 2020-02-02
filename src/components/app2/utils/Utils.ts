@@ -5,7 +5,7 @@ export const urlFmt = (href: string, name: string): string => {
 };
 
 export const pageNav = (pathname: string): string => {
-	return navigationLinks.filter(page => !window.location.pathname.endsWith(page.href)).map(page => pageNavFmt(page)).join("\n");
+	return navigationLinks.filter(page => !pathname.endsWith(page.href)).map(page => pageNavFmt(page)).join("\n");
 };
 
 export const pageNavFmt = (page: NavigationLink): string => {
@@ -154,7 +154,7 @@ export const fmtInput = (name: string, type: string, placeholder: string): strin
 	} else if (name === "name") {
 		placeholder = "Jane Doe";
 	}
-	return `<input class="bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}" type="${type}"/>`;
+	return `<input class="bg-dark-0 embedded browser-default" required placeholder="${placeholder}" name="${name}" type="${type}"/>`;
 };
 
 

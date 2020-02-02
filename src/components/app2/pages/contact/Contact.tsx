@@ -1,10 +1,10 @@
 import * as React from "react";
-import { pageNav, parseAnchors, parseButtons, parseInputs, parseTextareas, parseTooltips } from "../../utils/Utils";
 import { createRef, RefObject } from "react";
+import { pageNav } from "../../utils/Utils";
 import axios from "axios";
-import hljs from "highlight.js";
 import "./contact.css";
-import * as M from "materialize-css";
+import { hlight } from "../../utils/Highlighter";
+import { ThemeContext } from "../../components/styling/ThemeContext";
 
 type ContactProps = {};
 type ContactState = {};
@@ -46,7 +46,7 @@ static int contact_me(){
 }
 `;
 
-export default class Contact extends React.Component<ContactProps, ContactState> {
+class Contact extends React.Component<ContactProps, ContactState> {
 	ref: RefObject<HTMLPreElement>;
 	form: HTMLFormElement | null;
 
@@ -59,20 +59,27 @@ export default class Contact extends React.Component<ContactProps, ContactState>
 	}
 
 	componentDidMount(): void {
+		this.highlight();
+	}
+
+	componentDidUpdate(): void {
+		this.highlight();
+	}
+
+
+	highlight() {
 		if (this.ref.current) {
-			let source = hljs.highlight("c", sourceCode).value;
-			source = parseAnchors(source);
-			source = parseTooltips(source);
-			source = parseInputs(source);
-			source = parseTextareas(source);
-			source = parseButtons(source);
+			let source = hlight(sourceCode, {
+				language: this.context.language,
+				classPrefix: this.context.theme,
+			});
 			source = "<form id='form' method='POST' action='/mail/send_message'>" + source + "</form>";
-			this.ref.current.innerHTML += source;
+			this.ref.current.innerHTML = source;
 			this.form = this.ref.current.querySelector("form#form");
+			this.ref.current.querySelectorAll("input.embedded, textarea.embedded").forEach(inp => inp.classList.add(this.context.theme ? this.context.theme + "-hljs-string" : "hljs-string"));
 			if (this.form) {
 				this.form.addEventListener("submit", this.handleSubmit);
 			}
-			M.Tooltip.init(document.querySelectorAll(".tooltipped"), {});
 		}
 	}
 
@@ -119,3 +126,6 @@ export default class Contact extends React.Component<ContactProps, ContactState>
 		);
 	};
 };
+
+Contact.contextType = ThemeContext;
+export default Contact;

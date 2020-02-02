@@ -1,9 +1,9 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import hljs from "highlight.js";
-import { pageNav, parseAnchors, parseTooltips, projFmt } from "../../utils/Utils";
+import { pageNav, projFmt } from "../../utils/Utils";
 import projects from "../../static/Projects";
-import * as M from "materialize-css";
+import { hlight } from "../../utils/Highlighter";
+import { ThemeContext } from "../../components/styling/ThemeContext";
 
 type ProjectsProps = {};
 type ProjectsState = {};
@@ -33,7 +33,7 @@ static proj_t projects[${projects.length}] = {
 `;
 
 
-export default class Projects extends React.Component<ProjectsProps, ProjectsState> {
+class Projects extends React.Component<ProjectsProps, ProjectsState> {
 	ref: RefObject<HTMLPreElement>;
 
 	constructor(props: ProjectsProps) {
@@ -42,12 +42,18 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
 	}
 
 	componentDidMount(): void {
+		this.highlight();
+	}
+	componentDidUpdate(): void {
+		this.highlight();
+	}
+
+	highlight() {
 		if (this.ref.current) {
-			let highlighted = hljs.highlight("c", sourceCode).value;
-			highlighted = parseAnchors(highlighted);
-			highlighted = parseTooltips(highlighted);
-			this.ref.current.innerHTML = highlighted;
-			M.Tooltip.init(document.querySelectorAll(".tooltipped"), {});
+			this.ref.current.innerHTML = hlight(sourceCode, {
+				language: this.context.language,
+				classPrefix: this.context.theme,
+			});
 		}
 	}
 
@@ -57,3 +63,6 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
 		);
 	};
 };
+
+Projects.contextType = ThemeContext;
+export default Projects;

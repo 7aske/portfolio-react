@@ -1,9 +1,9 @@
 import * as React from "react";
+import { createRef, RefObject } from "react";
 import { skills } from "../../static/Skills";
-import { pageNav, parseAnchors, parseTooltips, skillFmt } from "../../utils/Utils";
-import { RefObject } from "react";
-import { createRef } from "react";
-import hljs from "highlight.js";
+import { pageNav, skillFmt } from "../../utils/Utils";
+import { hlight } from "../../utils/Highlighter";
+import { ThemeContext } from "../../components/styling/ThemeContext";
 
 type SkillsProps = {};
 type SkillsState = {};
@@ -24,7 +24,7 @@ ${pageNav(window.location.pathname)}
 ${skills.map(skill => skillFmt(skill)).join("")}
 `;
 
-export default class Skills extends React.Component<SkillsProps, SkillsState> {
+class Skills extends React.Component<SkillsProps, SkillsState> {
 	ref: RefObject<HTMLPreElement>;
 
 	constructor(props: SkillsProps) {
@@ -33,12 +33,19 @@ export default class Skills extends React.Component<SkillsProps, SkillsState> {
 	}
 
 	componentDidMount(): void {
+		this.highlight();
+	}
+
+	componentDidUpdate(): void {
+		this.highlight();
+	}
+
+	highlight() {
 		if (this.ref.current) {
-			let highlighted = hljs.highlight("c", sourceCode).value;
-			highlighted = parseAnchors(highlighted);
-			highlighted = parseTooltips(highlighted);
-			this.ref.current.innerHTML = highlighted;
-			// M.Tooltip.init(document.querySelectorAll(".tooltipped"), {});
+			this.ref.current.innerHTML = hlight(sourceCode, {
+				language: this.context.language,
+				classPrefix: this.context.theme,
+			});
 		}
 	}
 
@@ -47,4 +54,7 @@ export default class Skills extends React.Component<SkillsProps, SkillsState> {
 			<pre className="container fg-accent-2 left-align" ref={this.ref}/>
 		);
 	};
-};
+}
+
+Skills.contextType = ThemeContext;
+export default Skills;

@@ -1,9 +1,10 @@
 import * as React from "react";
-import hljs from "highlight.js";
-import { contactFmt, eduFmt, pageNav, parseAnchors } from "../../utils/Utils";
 import { createRef, RefObject } from "react";
+import { contactFmt, eduFmt, pageNav } from "../../utils/Utils";
 import { aboutContact, aboutDescription, aboutEducation } from "../../static/About";
 import resume from "../../../../assets/pdf/resume.pdf";
+import { hlight } from "../../utils/Highlighter";
+import { ThemeContext } from "../../components/styling/ThemeContext";
 
 type AboutProps = {};
 type AboutState = {};
@@ -45,7 +46,7 @@ static contact_t contact_info[${aboutContact.length}] = {
 }
 `;
 
-export default class About extends React.Component<AboutProps, AboutState> {
+class About extends React.Component<AboutProps, AboutState> {
 	ref: RefObject<HTMLPreElement>;
 
 	constructor(props: AboutProps) {
@@ -54,16 +55,26 @@ export default class About extends React.Component<AboutProps, AboutState> {
 	}
 
 	componentDidMount(): void {
-		if (this.ref.current) {
-			let highlighted = hljs.highlight("c", sourceCode).value;
-			highlighted = parseAnchors(highlighted);
-			this.ref.current.innerHTML = highlighted;
-		}
+		this.highlight();
+	}
+	componentDidUpdate(): void {
+		this.highlight();
 	}
 
+
+	highlight() {
+		if (this.ref.current) {
+			this.ref.current.innerHTML = hlight(sourceCode, {
+				language: this.context.language,
+				classPrefix: this.context.theme,
+			});
+		}
+	}
 	render() {
 		return (
 			<pre ref={this.ref} className="container left-align fg-accent-2"/>
 		);
 	};
 };
+About.contextType = ThemeContext;
+export default About;
