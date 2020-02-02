@@ -36,7 +36,9 @@ class App extends React.Component<any, { theme: Theme }> {
 	changeTheme(theme: Theme) {
 		const curr = this.state.theme;
 		for (let prop in theme) {
-			curr[prop] = theme[prop];
+			if (theme.hasOwnProperty(prop)) {
+				curr[prop] = theme[prop];
+			}
 		}
 		this.setState({theme: curr});
 	}

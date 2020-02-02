@@ -49,7 +49,7 @@ class Home extends React.Component<HomeProps, HomeState> {
 
 	highlight() {
 		if (this.ref.current) {
-			this.ref.current.innerHTML = hlight(sourceCode, {
+			hlight(this.ref.current, sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});

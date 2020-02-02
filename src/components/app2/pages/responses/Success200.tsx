@@ -30,7 +30,7 @@ class Success200 extends React.Component<any, any> {
 
 	highlight() {
 		if (this.ref.current) {
-			this.ref.current.innerHTML = hlight(sourceCode, {
+			hlight(this.ref.current, sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});

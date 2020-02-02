@@ -33,7 +33,7 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
  * ${spaces.substring(12)}You are here
  */`;
 
-			let source = hlight(sourceCode, {
+			let source = hlight(this.ref.current,sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});

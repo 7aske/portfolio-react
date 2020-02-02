@@ -69,7 +69,7 @@ class Contact extends React.Component<ContactProps, ContactState> {
 
 	highlight() {
 		if (this.ref.current) {
-			let source = hlight(sourceCode, {
+			let source = hlight(this.ref.current, sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});

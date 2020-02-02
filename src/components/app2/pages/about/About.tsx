@@ -64,12 +64,13 @@ class About extends React.Component<AboutProps, AboutState> {
 
 	highlight() {
 		if (this.ref.current) {
-			this.ref.current.innerHTML = hlight(sourceCode, {
+			hlight(this.ref.current, sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});
 		}
 	}
+
 	render() {
 		return (
 			<pre ref={this.ref} className="container left-align fg-accent-2"/>
