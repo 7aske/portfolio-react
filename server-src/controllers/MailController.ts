@@ -1,8 +1,6 @@
 import { Router } from "express";
 import * as nodemailer from "nodemailer";
 import rateLimit from "express-rate-limit";
-import { url } from "inspector";
-import { URL } from "url";
 
 const mailController = Router();
 
@@ -14,39 +12,18 @@ const mailLimiter = rateLimit({
 
 mailController.post("/send", mailLimiter, async (req, res) => {
 	console.log("Mail send request");
-	if (req.body.hasOwnProperty("name") &&
-		req.body.hasOwnProperty("email") &&
-		req.body.hasOwnProperty("message")) {
-		const name = req.body["name"];
-		const email = req.body["email"];
-		const body = req.body["message"];
-		try {
-			await sendMail(name, email, body);
-			res.status(200).send("200");
-		} catch (e) {
-			console.log(e);
-			res.status(400).send("400");
-		}
-	} else {
-		res.status(400).send("400");
-	}
-});
-
-mailController.post("/send_message", async (req, res) => {
-	console.log(req.body);
-	console.log("Mail send request");
-
 	let errors = [];
 
 	if (!req.body.hasOwnProperty("name")) {
-
+		errors.push("Name field missing");
 	}
 
 	if (!req.body.hasOwnProperty("email")) {
+		errors.push("Email field missing");
 
 	}
 
-	if (req.body.hasOwnProperty("message")) {
+	if (!req.body.hasOwnProperty("message")) {
 		errors.push("Message field missing");
 	}
 
@@ -58,7 +35,7 @@ mailController.post("/send_message", async (req, res) => {
 			await sendMail(name, email, body);
 			res.status(200).send("200");
 		} catch (e) {
-			console.error(e);
+			console.log(e);
 			res.status(400).send("400");
 		}
 	} else {

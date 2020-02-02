@@ -13,10 +13,10 @@ type AboutState = {};
 let sourceCode = `
 #include <time.h>
 
+#include "io/resume.h"
 ${pageNav(window.location.pathname)}
 
-
-static char* about = "${aboutDescription}";
+static char about[1024] = "${aboutDescription}";
 
 typedef struct education {
   char level[64];
@@ -29,7 +29,7 @@ typedef struct education {
  * @returns - returns the buffer containing the contents of file
  *            pointed to by'fileptr'
  */
-static void /*ANCHOR[$download_resume$,$${resume}$]*/(FILE* fileptr);
+extern void /*ANCHOR[$download_resume$,$${resume}$]*/(FILE* fileptr);
 
 static edu_t education[${aboutEducation.length}] = {
   ${aboutEducation.map(edu => eduFmt(edu))}

@@ -16,7 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("build"));
-// app.use("/mail", mailLimiter, mailController);
 app.use("/mail", mailController);
 app.use("/", webController);
 

@@ -1,6 +1,7 @@
 input.embedded, textarea.embedded {
   border: none;
   width: 540px;
+  border-bottom: 1px solid rgba(200, 69, 0, 0.3);
 }
 input.embedded::placeholder, textarea.embedded::placeholder {
   color: inherit;

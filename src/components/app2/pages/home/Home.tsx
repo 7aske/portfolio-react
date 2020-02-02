@@ -2,18 +2,24 @@ import * as React from "react";
 import { createRef, RefObject } from "react";
 import hljs from "highlight.js";
 import "../../../../../node_modules/highlight.js/styles/darcula.css";
-import { pageNav, parseAnchors } from "../../utils/Utils";
-import { firstNameFiglet, lastNameFiglet } from "../../static/Figlets";
+import { pageNav, parseAnchors, socialFmt } from "../../utils/Utils";
+// import { firstNameFiglet, lastNameFiglet } from "../../static/Figlets";
+import { socialMedia } from "../../static/Social";
+import { greetingMessage } from "../../static/Home";
 
 // language=TEXT
 let sourceCode = `#include <stdio.h>
 
 ${pageNav(window.location.pathname)}
 
-${firstNameFiglet}
+static const char greeting_message[1024] = "${greetingMessage}";  
 
-${lastNameFiglet}
+typedef struct social { char name[64]; char url[128]; };
+
+static social_t socials[${socialMedia.length}] = ${socialMedia.map(soc => socialFmt(soc))}
+
 int main(void) {
+  fputs(stdout, greeting_message);
   printf("Hello, World!\\n");
   return 0;
 }

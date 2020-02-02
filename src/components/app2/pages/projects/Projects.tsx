@@ -12,7 +12,7 @@ type ProjectsState = {};
 let sourceCode = `
 /*
  * Here you can find some of the more notable projects I had
- * worked on.
+ * worked on. Projects have links to their respective repos.
  */
  
 ${pageNav(window.location.pathname)}

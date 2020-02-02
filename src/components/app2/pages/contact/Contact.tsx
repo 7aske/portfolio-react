@@ -4,6 +4,7 @@ import { createRef, RefObject } from "react";
 import axios from "axios";
 import hljs from "highlight.js";
 import "./contact.css";
+import * as M from "materialize-css";
 
 type ContactProps = {};
 type ContactState = {};
@@ -19,17 +20,17 @@ let sourceCode = `
 ${pageNav(window.location.pathname)}
 
 /*
- * @param 'name' - Your name.
- * @param 'email' - Your email so I can respond back
+ * @param 'name'    - Your name.
+ * @param 'email'   - Your email so I can respond back.
  * @param 'message' - Message you're sending me.
  */
 extern int send_message(char* name, char* email, char* message);
 
 static int contact_me(){
   int retval;
-  char* name = \n\t"/*INPUT[$text$,$name$]*/";
-  char* mail = \n\t"/*INPUT[$text$,$email$]*/";
-  char* message = \n\t"/*TEXTAREA[$message$]*/";
+  char* /*TOOLTIP[$Write your name between the quotation marks$,$name$]*/ = \n\t"/*INPUT[$text$,$name$]*/";
+  char* /*TOOLTIP[$Write your email between the quotation marks$,$email$]*/ = \n\t"/*INPUT[$text$,$email$]*/";
+  char* /*TOOLTIP[$Write your message text below$,$message$]*/ = \n\t"/*TEXTAREA[$message$]*/";
 /*
  * After filling the required data tap on the
  * 'send_message' function call to submit!
@@ -71,6 +72,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
 			if (this.form) {
 				this.form.addEventListener("submit", this.handleSubmit);
 			}
+			M.Tooltip.init(document.querySelectorAll(".tooltipped"), {});
 		}
 	}
 

@@ -4,8 +4,8 @@ export const urlFmt = (href: string, name: string): string => {
 	return `<a class='fg-accent-1' href='${href}'>${name}</a>`;
 };
 
-export const pageNav = (pathname: string):string =>{
-	return navigationLinks.filter(page => !window.location.pathname.endsWith(page.href)).map(page=>pageNavFmt(page)).join("\n");
+export const pageNav = (pathname: string): string => {
+	return navigationLinks.filter(page => !window.location.pathname.endsWith(page.href)).map(page => pageNavFmt(page)).join("\n");
 };
 
 export const pageNavFmt = (page: NavigationLink): string => {
@@ -36,6 +36,13 @@ export const eduFmt = (edu: Education): string => {
     .level= "${edu.level}",
     .institution= "${edu.institution}",
     .grad_date= ${edu.grad_year ? `{.tm_year= ${edu.grad_year}}` : "{}"}
+  }`;
+};
+
+export const socialFmt = (soc: Social): string => {
+	return `{
+    .name= "${soc.name}",
+    .url= "/*ANCHOR[$${soc.url}$,$${soc.url}$]*/",
   }`;
 };
 
@@ -87,7 +94,6 @@ export const tooltipFmt = (name: string, tooltip: string) => {
 };
 
 
-
 export const parseAnchors = (source: string): string => {
 	let safetyCheck = 100;
 	let res;
@@ -97,7 +103,7 @@ export const parseAnchors = (source: string): string => {
 		if (res && res.length === 3) {
 			source = source.replace(res[0], urlFmt(res[2], res[1]));
 		}
-		if (safetyCheck === 0){
+		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
@@ -113,15 +119,15 @@ export const parseTooltips = (source: string): string => {
 		if (res && res.length === 3) {
 			source = source.replace(res[0], tooltipFmt(res[2], res[1]));
 		}
-		if (safetyCheck === 0){
+		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
 	return source;
 };
 
-export const fmtTextarea = (name: string, placeholder:string): string => {
-	return `<textarea class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
+export const fmtTextarea = (name: string, placeholder: string): string => {
+	return `<textarea class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
 };
 
 
@@ -132,9 +138,9 @@ export const parseTextareas = (source: string): string => {
 		safetyCheck--;
 		res = source.match(/\/\*TEXTAREA\[\$(.+)\$]\*\//);
 		if (res && res.length === 2) {
-			source = source.replace(res[0], fmtTextarea(res[1], "Your input here"));
+			source = source.replace(res[0], fmtTextarea(res[1], "Your text here"));
 		}
-		if (safetyCheck === 0){
+		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
@@ -142,8 +148,13 @@ export const parseTextareas = (source: string): string => {
 };
 
 
-export const fmtInput = (name: string, type: string, placeholder:string): string => {
-	return `<input class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" placeholder="${placeholder}" name="${name}" type="${type}"/>`;
+export const fmtInput = (name: string, type: string, placeholder: string): string => {
+	if (name === "email") {
+		placeholder = "janedoe@example.com";
+	} else if (name === "name") {
+		placeholder = "Jane Doe";
+	}
+	return `<input class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}" type="${type}"/>`;
 };
 
 
@@ -156,7 +167,7 @@ export const parseInputs = (source: string): string => {
 		if (res && res.length === 3) {
 			source = source.replace(res[0], fmtInput(res[2], res[1], "Your input here!"));
 		}
-		if (safetyCheck === 0){
+		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
@@ -177,7 +188,7 @@ export const parseButtons = (source: string): string => {
 		if (res && res.length === 3) {
 			source = source.replace(res[0], fmtButton(res[1], res[2]));
 		}
-		if (safetyCheck === 0){
+		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
@@ -190,7 +201,7 @@ const isWs = (x: string): boolean => {
 };
 
 export const fold = (str: string, maxWidth: number, tab: number): string => {
-	if (window.innerWidth <= 640){
+	if (window.innerWidth <= 640) {
 		tab = 0;
 	}
 	console.log(window.innerWidth);

@@ -11,14 +11,15 @@ type SkillsState = {};
 // language=TEXT
 let sourceCode = `
 /*
- * These represent confidence I have in a certain language, technology or framework
- * Confidence values range from 0x00 to 0x${(100).toString(16)}
+ * These represent confidence I have in a certain
+ * language, technology or framework.
+ * Confidence values range from 0x00 to 0x${(100).toString(16)}.
+ * Naturally numbers are in hex.
  */
 
 #include <stdint.h>
 
 ${pageNav(window.location.pathname)}
-
 
 ${skills.map(skill => skillFmt(skill)).join("")}
 `;
