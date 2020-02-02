@@ -127,7 +127,7 @@ export const parseTooltips = (source: string): string => {
 };
 
 export const fmtTextarea = (name: string, placeholder: string): string => {
-	return `<textarea class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
+	return `<textarea class="bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
 };
 
 
@@ -138,7 +138,7 @@ export const parseTextareas = (source: string): string => {
 		safetyCheck--;
 		res = source.match(/\/\*TEXTAREA\[\$(.+)\$]\*\//);
 		if (res && res.length === 2) {
-			source = source.replace(res[0], fmtTextarea(res[1], "Your text here"));
+			source = source.replace(res[0], fmtTextarea(res[1], "\"Your text here\""));
 		}
 		if (safetyCheck === 0) {
 			break;
@@ -154,7 +154,7 @@ export const fmtInput = (name: string, type: string, placeholder: string): strin
 	} else if (name === "name") {
 		placeholder = "Jane Doe";
 	}
-	return `<input class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}" type="${type}"/>`;
+	return `<input class="bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}" type="${type}"/>`;
 };
 
 
