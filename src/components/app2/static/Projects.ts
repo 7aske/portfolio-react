@@ -4,8 +4,9 @@ import go from "../../../assets/images/lang/golang.png";
 import js from "../../../assets/images/lang/js.png";
 import ts from "../../../assets/images/lang/ts.png";
 import rust from "../../../assets/images/lang/rust.png";
+import { projFmt } from "../utils/Utils";
 
-const projects: Project[] = [
+export const projects: Project[] = [
 	{
 		img: c,
 		type: "C",
@@ -86,4 +87,28 @@ const projects: Project[] = [
 	// },
 ];
 
-export default projects;
+// language=TEXT
+let cSourceCode = `
+/*
+ * Here you can find some of the more notable projects I had
+ * worked on. Projects have links to their respective repos.
+ */
+
+enum LANG { C, PY, GO, JS, RUST, CPP, JAVA };
+
+typedef struct project {
+  enum LANG lang;
+  char name[32];
+  char desc[512];
+  char repo[64];
+  char user[16];
+} proj_t;
+
+static proj_t projects[${projects.length}] = {
+   ${projects.map(proj => projFmt(proj))}
+};
+`;
+
+export const projectsSourceCode: { [key: string]: string } = {
+	c: cSourceCode,
+};

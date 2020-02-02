@@ -3,10 +3,9 @@ import { createRef } from "react";
 import { pageNav } from "../../utils/Utils";
 import { hlight } from "../../utils/Highlighter";
 import { ThemeContext } from "../../components/styling/ThemeContext";
+import Navigation from "../../components/nav/Navigation";
 
 let sourceCode = `
-${pageNav(window.location.pathname)}
-
 #define ERR_TYP "404 NOT FOUND"
 #define ERR_MSG "Page not found."
 #define ERR_ALT "Go back to /*ANCHOR[$/root$,$/$]*/"
@@ -29,6 +28,7 @@ class Error404 extends React.Component<any, any> {
 	componentDidMount(): void {
 		this.highlight();
 	}
+
 	componentDidUpdate(): void {
 		this.highlight();
 	}
@@ -44,9 +44,15 @@ class Error404 extends React.Component<any, any> {
 	}
 
 	render() {
-		return (<pre ref={this.ref} className="container left-align fg-accent-2"/>);
+		return (
+			<div className="container">
+				<Navigation otherImports={["nav.h"]}/>
+				<pre ref={this.ref} className="fg-accent-2 left-align"/>
+			</div>
+		);
 	}
 
 }
+
 Error404.contextType = ThemeContext;
 export default Error404;

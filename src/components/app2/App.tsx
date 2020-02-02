@@ -20,7 +20,7 @@ import "./components/styling/atom-one-dark.css";
 import "./components/styling/solarized-dark.css";
 import "./components/styling/railscasts.css";
 import "./components/styling/monokai.css";
-import Navigation from "./components/nav/Navigation";
+import Toolbar from "./components/nav/Toolbar";
 
 document.body.classList.add("bg-dark-0");
 
@@ -48,9 +48,8 @@ class App extends React.Component<any, { theme: Theme }> {
 		return (
 			<main className="App bg-dark-0">
 				<ThemeContext.Provider value={this.state.theme}>
-					<Navigation changeTheme={this.changeTheme}/>
 					<BrowserRouter>
-						<Breadcrumbs/>
+						<Toolbar changeTheme={this.changeTheme}/>
 						<Switch>
 							<Route exact path="/" component={Home}/>
 							<Route exact path="/projects" component={Projects}/>

@@ -8,8 +8,12 @@ export const pageNav = (pathname: string): string => {
 	return navigationLinks.filter(page => !pathname.endsWith(page.href)).map(page => pageNavFmt(page)).join("\n");
 };
 
-export const pageNavFmt = (page: NavigationLink): string => {
-	return `#include "/*ANCHOR[$${page.name.toLowerCase()}.h$,$${page.href}$]*/"`;
+export const pageNavFmt = (link: NavigationLink): string => {
+	return `#include "/*ANCHOR[$${link.name.toLowerCase()}.h$,$${link.href}$]*/"`;
+};
+
+export const linkNavFmt = (link: NavigationLink): string => {
+	return `#include "${link.name.toLowerCase()}.h"`;
 };
 
 export const skillFmt = (skill: Skill) => {

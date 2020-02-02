@@ -1,28 +1,13 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import { skills } from "../../static/Skills";
+import { skills, skillsSourceCode } from "../../static/Skills";
 import { pageNav, skillFmt } from "../../utils/Utils";
 import { hlight } from "../../utils/Highlighter";
 import { ThemeContext } from "../../components/styling/ThemeContext";
+import Navigation from "../../components/nav/Navigation";
 
 type SkillsProps = {};
 type SkillsState = {};
-
-// language=TEXT
-let sourceCode = `
-/*
- * These represent confidence I have in a certain
- * language, technology or framework.
- * Confidence values range from 0x00 to 0x${(100).toString(16)}.
- * Naturally numbers are in hex.
- */
-
-#include <stdint.h>
-
-${pageNav(window.location.pathname)}
-
-${skills.map(skill => skillFmt(skill)).join("")}
-`;
 
 class Skills extends React.Component<SkillsProps, SkillsState> {
 	ref: RefObject<HTMLPreElement>;
@@ -42,7 +27,7 @@ class Skills extends React.Component<SkillsProps, SkillsState> {
 
 	highlight() {
 		if (this.ref.current) {
-			hlight(this.ref.current, sourceCode, {
+			hlight(this.ref.current, skillsSourceCode[this.context.language], {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});
@@ -51,7 +36,10 @@ class Skills extends React.Component<SkillsProps, SkillsState> {
 
 	render() {
 		return (
-			<pre className="container fg-accent-2 left-align" ref={this.ref}/>
+			<div className="container">
+				<Navigation/>
+				<pre ref={this.ref} className="fg-accent-2 left-align"/>
+			</div>
 		);
 	};
 }

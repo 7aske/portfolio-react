@@ -1,3 +1,5 @@
+import { skillFmt } from "../utils/Utils";
+
 export const skills: Skill[] = [{
 	name: "C",
 	confidence: 80,
@@ -66,26 +68,43 @@ export const skills: Skill[] = [{
 	name: "System Administration",
 	confidence: 80,
 	frameworks: [{
-		name:"Linux",
+		name: "Linux",
 		confidence: 80,
-	},{
-		name:"FreeBSD",
+	}, {
+		name: "FreeBSD",
 		confidence: 40,
-	},{
-		name:"Windows",
+	}, {
+		name: "Windows",
 		confidence: 60,
 	}],
 }, {
 	name: "Scripting",
 	confidence: 70,
 	frameworks: [{
-		name:"Bash",
+		name: "Bash",
 		confidence: 65,
-	},{
-		name:"Python",
+	}, {
+		name: "Python",
 		confidence: 70,
 	}],
 }, {
 	name: "Networking",
 	confidence: 70,
 }];
+
+// language=TEXT
+let cSourceCode = `
+/*
+ * These represent confidence I have in a certain
+ * language, technology or framework.
+ * Confidence values range from 0x00 to 0x${(100).toString(16)}.
+ * Naturally numbers are in hex.
+ */
+
+${skills.map(skill => skillFmt(skill)).join("")}
+`;
+
+export const skillsSourceCode: { [key: string]: string } = {
+	c: cSourceCode,
+};
+

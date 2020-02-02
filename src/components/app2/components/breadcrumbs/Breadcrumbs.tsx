@@ -55,7 +55,7 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 
 	render() {
 		return (
-			<pre className="left-align container bg-dark-0" ref={this.ref}/>
+			<pre className="left-align bg-dark-0" ref={this.ref}/>
 		);
 	};
 }

@@ -1,53 +1,43 @@
-import React, { createRef } from "react";
+import * as React from "react";
 import navigationLinks from "./NavigationLinks";
-import { ThemeContext, themes } from "../styling/ThemeContext";
+import { BrowserRouter, Link } from "react-router-dom";
+import { ThemeContext } from "../styling/ThemeContext";
+import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 
-export type HeaderHref = {
-	href: string;
-	name: string;
-	icon: string;
-	target?: string;
-}
+type NavigationProps = { otherImports?: string[] };
+type NavigationState = { navLinks: NavigationLink[] };
 
-type NavigationState = {
-	links: HeaderHref[];
-};
-
-class Navigation extends React.Component<any, NavigationState> {
-	state: NavigationState;
-	private readonly navRef = createRef<HTMLDivElement>();
-
-	constructor(props: any) {
+class Navigation extends React.Component<NavigationProps, NavigationState> {
+	constructor(props: NavigationProps) {
 		super(props);
-		this.state = {links: navigationLinks};
-		this.changeTheme = this.changeTheme.bind(this);
-	}
-
-	componentDidMount(): void {
-		console.log(this.context);
-	}
-
-	changeTheme() {
-		let index = themes.indexOf(this.context.theme);
-		if (index === themes.length - 1) {
-			this.props.changeTheme({theme: themes[0]});
-		} else {
-			this.props.changeTheme({theme: themes[index + 1]});
-		}
+		this.state = {navLinks: navigationLinks.filter(page => !window.location.pathname.endsWith(page.href))};
 	}
 
 	render() {
 		return (
-			<nav ref={this.navRef} className="bg-def-1" style={{userSelect:"none"}}>
-				<div className="nav-wrapper container">
-					<a href="/"
-					   className="brand-logo left show-on-medium-and-up hide-on-small-and-down">portfolio.{this.context.language}</a>
-					<a href="/" className="brand-logo left show-on-small hide-on-med-and-up">NT</a>
-					<a style={{cursor:"pointer"}} onClick={this.changeTheme} className="right">{this.context.theme}</a>
-				</div>
-			</nav>
+			<pre className="fg-accent-2 left-align">
+				<Breadcrumbs/>
+				{this.props.otherImports ? this.props.otherImports.map(imp => <div
+					className={this.context.theme ? this.context.theme + "-hljs-meta" : "hljs-meta"}>#include
+					&lt;{imp}&gt;<br/></div>) : ""}
+				{this.state.navLinks.map(link => {
+					if (!link.href.startsWith("http")) {
+						return <div
+							className={this.context.theme ? this.context.theme + "-hljs-meta" : "hljs-meta"}>#include
+							"<Link
+								className="fg-accent-1" to={link.href}>{link.name.toLowerCase() + ".h"}</Link>"<br/>
+						</div>;
+					} else {
+						return <div
+							className={this.context.theme ? this.context.theme + "-hljs-meta" : "hljs-meta"}>#include
+							"<a
+								className="fg-accent-1" href={link.href}>{link.name.toLowerCase() + ".h"}</a>"<br/>
+						</div>;
+					}
+				})}
+			</pre>
 		);
-	}
+	};
 }
 
 Navigation.contextType = ThemeContext;
