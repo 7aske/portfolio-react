@@ -14,8 +14,8 @@ ${firstNameFiglet}
 
 ${lastNameFiglet}
 int main(void) {
-	printf("Hello, World!\\n");
-	return 0;
+  printf("Hello, World!\\n");
+  return 0;
 }
 `;
 
@@ -27,6 +27,7 @@ type HomeState = {
 
 export default class Home extends React.Component<HomeProps, HomeState> {
 	ref: RefObject<HTMLPreElement>;
+
 	constructor(props: HomeProps) {
 		super(props);
 		this.ref = createRef();
@@ -45,7 +46,7 @@ export default class Home extends React.Component<HomeProps, HomeState> {
 	render() {
 		return (
 			<div className="container">
-				<pre id="home-dest" ref={this.ref} className="fg-accent-2 left-align" />
+				<pre id="home-dest" ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);
 	};

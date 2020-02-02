@@ -3,7 +3,8 @@ import hljs from "highlight.js";
 import { contactFmt, eduFmt, pageNav, parseAnchors } from "../../utils/Utils";
 import { createRef, RefObject } from "react";
 import { aboutContact, aboutDescription, aboutEducation } from "../../static/About";
-import resume from "../../../../assets/pdf/resume.pdf"
+import resume from "../../../../assets/pdf/resume.pdf";
+
 type AboutProps = {};
 type AboutState = {};
 //static char* about = "${fold(aboutDescription, 80, 1)}";
@@ -18,9 +19,9 @@ ${pageNav(window.location.pathname)}
 static char* about = "${aboutDescription}";
 
 typedef struct education {
-	char level[64];
-	char institution[128];
-	struct tm grad_date;
+  char level[64];
+  char institution[128];
+  struct tm grad_date;
 } edu_t;
 
 /*
@@ -35,8 +36,8 @@ static edu_t education[${aboutEducation.length}] = {
 }
 
 typedef struct contact {
-	char type[16];
-	char value[64];
+  char type[16];
+  char value[64];
 } contact_t;
 
 static contact_t contact_info[${aboutContact.length}] = {
@@ -62,7 +63,7 @@ export default class About extends React.Component<AboutProps, AboutState> {
 
 	render() {
 		return (
-			<pre ref={this.ref} className="container left-align fg-accent-2" />
+			<pre ref={this.ref} className="container left-align fg-accent-2"/>
 		);
 	};
 };

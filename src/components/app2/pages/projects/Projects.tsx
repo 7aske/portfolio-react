@@ -3,7 +3,7 @@ import { createRef, RefObject } from "react";
 import hljs from "highlight.js";
 import { pageNav, parseAnchors, parseTooltips, projFmt } from "../../utils/Utils";
 import projects from "../../static/Projects";
-import M from "materialize-css";
+import * as M from "materialize-css";
 
 type ProjectsProps = {};
 type ProjectsState = {};
@@ -20,11 +20,11 @@ ${pageNav(window.location.pathname)}
 enum LANG { C, PY, GO, JS, RUST, CPP, JAVA };
 
 typedef struct project {
-	enum LANG lang;
-	char name[32];
-	char desc[512];
-	char repo[64];
-	char user[16];
+  enum LANG lang;
+  char name[32];
+  char desc[512];
+  char repo[64];
+  char user[16];
 } proj_t;
 
 static proj_t projects[${projects.length}] = {

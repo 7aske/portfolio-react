@@ -6,11 +6,18 @@ import { pageNav, parseAnchors } from "../../utils/Utils";
 let message = `
 ${pageNav(window.location.pathname)}
 
-#define ERR_404 "NOT FOUND"
-#define ERR_MSG "Page not found. Go back to /*ANCHOR[$/root$,$/$]*/"
+#define ERR_TYP "429 TOO MANY REQUESTS"
+#define ERR_MSG "Okay calm down. I will respond ASAP."
+#define ERR_ALT "Go back to /*ANCHOR[$/root$,$/$]*/"
+
+/*
+ * Tap the 'go_back' function declaration to go back to home page
+ * @param 'path' - redirects the browser to path
+ */
+extern void /*ANCHOR[$go_back$,$/$]*/(const char* path);
 `;
 
-export default class Error404 extends React.Component<any, any> {
+export default class Error429 extends React.Component<any, any> {
 	ref: React.RefObject<HTMLPreElement>;
 
 	constructor(props: any) {
@@ -27,11 +34,7 @@ export default class Error404 extends React.Component<any, any> {
 	}
 
 	render() {
-		return (<div className="container left-align">
-			<pre ref={this.ref}>
-
-			</pre>
-		</div>);
+		return (<pre ref={this.ref} className="container left-align fg-accent-2"/>);
 	}
 
 }

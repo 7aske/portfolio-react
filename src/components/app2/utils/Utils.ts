@@ -121,7 +121,7 @@ export const parseTooltips = (source: string): string => {
 };
 
 export const fmtTextarea = (name: string, placeholder:string): string => {
-	return `<textarea class="fg-accent-1 bg-dark-0 embedded hljs-string" placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
+	return `<textarea class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
 };
 
 
@@ -143,7 +143,7 @@ export const parseTextareas = (source: string): string => {
 
 
 export const fmtInput = (name: string, type: string, placeholder:string): string => {
-	return `<input class="fg-accent-1 bg-dark-0 embedded hljs-string" placeholder="${placeholder}" name="${name}" type="${type}"/>`;
+	return `<input class="fg-accent-1 bg-dark-0 embedded hljs-string browser-default" placeholder="${placeholder}" name="${name}" type="${type}"/>`;
 };
 
 
@@ -194,7 +194,7 @@ export const fold = (str: string, maxWidth: number, tab: number): string => {
 		tab = 0;
 	}
 	console.log(window.innerWidth);
-	let newLineStr = `"\n${"\t".repeat(tab)}"`;
+	let newLineStr = `"\n${"  ".repeat(tab)}"`;
 	let found = false;
 	let res = "";
 	while (str.length > maxWidth) {

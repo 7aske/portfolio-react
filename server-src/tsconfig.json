@@ -3,20 +3,25 @@
         "experimentalDecorators": true,
         "target": "es6",
         "module": "commonjs",
-        "lib": ["es2015"],
-         "allowJs": false,
+        "lib": [
+            "es2015"
+        ],
+        "typeRoots": [
+            "../src/@types"
+        ],
+        "allowJs": false,
         "sourceMap": false,
         "outDir": "../build",
         "rootDir": "./",
-         "removeComments": true,
+        "removeComments": true,
         "downlevelIteration": true,
-        "strict": true,
-        "noImplicitAny": true,
+        //        "strict": true,
+        //        "noImplicitAny": true,
         "strictNullChecks": false,
         "strictFunctionTypes": true,
         "strictPropertyInitialization": false,
         "forceConsistentCasingInFileNames": true,
-         "moduleResolution": "node",
+        "moduleResolution": "node",
         "esModuleInterop": true
     }
 }
