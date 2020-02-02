@@ -38,9 +38,9 @@ static int contact_me(){
   retval = /*BUTTON[$send_message$,$submit$]*/(name, email, message);
   
   if (retval){
-    fputs(stdout, "Message sent!");
+    fputs("Message sent!", stdout);
   } else {
-    fputs(stderr, "Sending message failed!");
+    fputs("Sending message failed!", stderr);
   }
   return retval;
 }

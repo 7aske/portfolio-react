@@ -14,12 +14,12 @@ ${pageNav(window.location.pathname)}
 
 static const char greeting_message[1024] = "${greetingMessage}";  
 
-typedef struct social { char name[64]; char url[128]; };
+typedef struct social { char name[64]; char url[128]; } social_t;
 
 static social_t socials[${socialMedia.length}] = ${socialMedia.map(soc => socialFmt(soc))}
 
 int main(void) {
-  fputs(stdout, greeting_message);
+  fputs(greeting_message, stdout);
   printf("Hello, World!\\n");
   return 0;
 }
