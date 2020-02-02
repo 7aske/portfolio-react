@@ -1,0 +1,43 @@
+nav li .nav-link {
+  height: 62px;
+  font-size: 16px;
+  border: 3px solid rgba(0, 0, 0, 0);
+  display: inline-block !important;
+}
+nav li .nav-link span {
+  position: relative;
+  top: -10px;
+  display: inline-block;
+}
+nav li .nav-link i {
+  position: relative;
+  top: -5px;
+  margin-left: 15px;
+  display: inline-block !important;
+  font-size: 24px;
+}
+nav li .nav-link:hover {
+  border-bottom: 3px solid rebeccapurple;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+nav li .highlighted {
+  border-bottom: 3px solid rebeccapurple;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 540px) {
+  nav li {
+    width: 50px;
+  }
+  nav li .nav-link {
+    width: 50px;
+    height: 58px;
+  }
+  nav li .nav-link i {
+    font-size: 14px;
+    margin: 0;
+  }
+  nav li .nav-link span {
+    display: none !important;
+  }
+}

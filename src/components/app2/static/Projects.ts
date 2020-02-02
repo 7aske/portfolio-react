@@ -1,14 +1,8 @@
-import React from "react";
+import c from "../../../assets/images/lang/c.png";
 import py from "../../../assets/images/lang/python.png";
 import go from "../../../assets/images/lang/golang.png";
-import rust from "../../../assets/images/lang/rust.png";
-// import ts from "../../../assets/images/lang/ts.png";
 import js from "../../../assets/images/lang/js.png";
-import c from "../../../assets/images/lang/c.png";
-// import java from "../../../assets/images/lang/java.png";
-// import cpp from "../../../assets/images/lang/c++.png";
-import ProjectList from "./project-list/ProjectList";
-
+import rust from "../../../assets/images/lang/rust.png";
 
 const projects: Project[] = [
 	{
@@ -84,21 +78,4 @@ const projects: Project[] = [
 	// },
 ];
 
-export default class Projects extends React.Component<any, any> {
-	render() {
-		return (
-			<div id="projects">
-				<div className="container grey darken-4">
-					<div className="row pt-5 mb-0">
-						<h5 className="text-white mt-0 pt-0 mb-5">Here listed are some of the more notable projects I
-							worked
-							on:</h5>
-						<div className="col s12">
-							<ProjectList projects={projects}/>
-						</div>
-					</div>
-				</div>
-			</div>
-		);
-	}
-}
+export default projects;

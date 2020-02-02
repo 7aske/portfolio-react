@@ -1,14 +1,13 @@
 import React from "react";
-import { ProjectType } from "../Projects";
 import "./ProjectListItem.css";
 
 type ProjectListItemProps = {
-	project: ProjectType;
+	project: Project;
 };
 
 
-export default class ProjectListItem extends React.Component {
-	state: ProjectType;
+export default class ProjectListItem extends React.Component<ProjectListItemProps, Project> {
+	state: Project;
 	props: ProjectListItemProps;
 	private readonly imageRef = React.createRef<HTMLImageElement>();
 
@@ -17,6 +16,7 @@ export default class ProjectListItem extends React.Component {
 		this.props = props;
 		this.state = {
 			img: props.project.img,
+			type: props.project.type,
 			description: props.project.description,
 			name: props.project.name,
 			repository: props.project.repository,

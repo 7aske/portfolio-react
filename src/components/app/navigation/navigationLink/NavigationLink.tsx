@@ -14,7 +14,7 @@ type NavigationLinkState = {
 	target: string | undefined;
 }
 
-export default class NavigationLink extends React.Component {
+export default class NavigationLink extends React.Component<NavigationLinkProps, NavigationLinkState> {
 	props: NavigationLinkProps;
 	state: NavigationLinkState;
 	private readonly magicNumber: number;

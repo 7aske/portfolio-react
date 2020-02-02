@@ -7,7 +7,7 @@ type NavigationState = {
 	links: HeaderHref[];
 };
 
-export default class Navigation extends React.Component {
+export default class Navigation extends React.Component<any, NavigationState> {
 	state: NavigationState;
 	// private header: HTMLDivElement;
 	private readonly navRef = React.createRef<HTMLDivElement>();

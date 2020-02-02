@@ -1,16 +1,16 @@
 import React from "react";
-import { ProjectType } from "../Projects";
 import ProjectListItem from "../project-list-item/ProjectListItem";
 import {initializeGithubButtons} from "../../../util/initGithubButtons"
-type SkillsListType = {
-	projects: ProjectType[];
+
+type SkillsListProps = {
+	projects: Project[];
 };
 
 
-export default class ProjectList extends React.Component {
-	state: SkillsListType;
-	props: SkillsListType;
-	constructor(props: SkillsListType) {
+export default class ProjectList extends React.Component<SkillsListProps, SkillsListProps> {
+	state: SkillsListProps;
+	props: SkillsListProps;
+	constructor(props: SkillsListProps) {
 		super(props);
 		this.props = props;
 		this.state = {

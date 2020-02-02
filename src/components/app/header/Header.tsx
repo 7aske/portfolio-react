@@ -40,7 +40,7 @@ type HeaderState = {
 	links: HeaderHref[];
 }
 
-export default class Header extends React.Component {
+export default class Header extends React.Component<any, HeaderState> {
 	state: HeaderState;
 
 	constructor(props: any) {
