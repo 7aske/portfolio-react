@@ -102,7 +102,7 @@ let rustSourceCode = `
 /// worked on. Projects have links to their respective repos.
 ///
 
-enum Lang { C, PY, GO, JS, RUST, CPP, JAVA }
+enum Lang { C, PY, GO, JS, TS, RUST, CPP, JAVA }
 
 struct Project {
   lang: Lang,
@@ -115,8 +115,37 @@ static PROJECTS: &[Project] = &[
     ${projects.map(proj => projFmt(proj, "rust"))}
 ];
 `;
+// language=TEXT
+let pySourceCode = `
+#
+# Here you can find some of the more notable projects I had
+# worked on. Projects have links to their respective repos.
+#
+
+import enum
+class ProjType(enum.Enum):
+  C = 0
+  PY = 1
+  GO = 2
+  JS = 3
+  RUST = 4
+  CPP = 5
+  JAVA = 6
+
+class Project:
+  def __init__(self, lang, name, desc, repo):
+    self.lang = lang
+    self.name = name
+    self.desc = desc
+    self.repo = repo
+
+projects = [
+  ${projects.map(proj => projFmt(proj, "python"))}
+]
+`;
 
 export const projectsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
-	rust: rustSourceCode
+	rust: rustSourceCode,
+	python: pySourceCode,
 };

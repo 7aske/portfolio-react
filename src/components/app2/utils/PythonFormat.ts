@@ -8,7 +8,7 @@ export const linkNavFmt = (link: NavigationLink): string => {
 
 export const skillFmt = (skill: Skill) => {
 	let skillName = skill.name.replace(" ", "_").toUpperCase();
-	let out = ` ${skillName} = 0x${skill.confidence.toString(16)}\n`;
+	let out = `${skillName} = 0x${skill.confidence.toString(16)}\n`;
 	if (skill.frameworks) {
 		skill.frameworks.forEach(fw => {
 			out += `${skillName}_${fw.name.replace(" ", "_").toUpperCase()} = 0x${fw.confidence.toString(16)}\n`;
@@ -76,7 +76,7 @@ export const projFmt = (proj: Project) => {
 
 	// .desc= "${fold(proj.description, 60, 1)}",
 	return `Project(
-    type=ProjType/*TOOLTIP[$${lang_tooltip}$,$${proj.type}$]*/,
+    type=ProjType./*TOOLTIP[$${lang_tooltip}$,$${proj.type}$]*/,
     name="${proj.name}",
     desc="${proj.description}",
     repo="/*ANCHOR[$${proj.repository}$,$${proj.repository}$]*/"

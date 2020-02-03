@@ -106,18 +106,31 @@ ${skills.map(skill => skillFmt(skill, "c")).join("")}
 
 // language=TEXT
 let rsSourceCode = `
-/*
- * These represent confidence I have in a certain
- * language, technology or framework.
- * Confidence values range from 0x00 to 0x${(100).toString(16)}.
- * Naturally numbers are in hex.
- */
+///
+/// These represent confidence I have in a certain
+/// language, technology or framework.
+/// Confidence values range from 0x00 to 0x${(100).toString(16)}.
+/// Naturally numbers are in hex.
+///
 
 ${skills.map(skill => skillFmt(skill, "rust")).join("")}
+`;
+
+// language=TEXT
+let pySourceCode = `
+# 
+#  These represent confidence I have in a certain
+#  language, technology or framework.
+#  Confidence values range from 0x00 to 0x${(100).toString(16)}.
+#  Naturally numbers are in hex.
+# 
+
+${skills.map(skill => skillFmt(skill, "python")).join("")}
 `;
 
 export const skillsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
+	python: pySourceCode,
 };
 

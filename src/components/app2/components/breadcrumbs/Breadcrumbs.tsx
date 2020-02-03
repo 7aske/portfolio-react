@@ -49,7 +49,9 @@ ${cc} /root${window.location.pathname === "/" ? "" : window.location.pathname}
 ${cc} ${spaces}^
 ${cc} ${spaces}|
 ${cc} ${spaces.substring(12)}You are here
-${cc} `;
+${cc} 
+${cc} You can change the language or 
+${cc} in the upper right corner`;
 
 			let source = hlight(this.ref.current, sourceCode, {
 				language: this.context.language,

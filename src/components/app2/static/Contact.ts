@@ -24,9 +24,9 @@ static int contact_me(){
     fputs("Sending message failed!", stderr);
   }
   return retval;
-}
+}`;
 
-`;// language=TEXT
+// language=TEXT
 let rsSourceCode = `
 /// 
 ///  @param 'name'    - Your name.
@@ -43,14 +43,38 @@ fn contact_me(){
 /// After filling the required data tap on the
 /// 'send_message' function call to submit!
 ///
- match /*BUTTON[$send_message$,$submit$]*/(name, email, message) {
-   Ok(_) => println!("Message sent!"),
-   Err(_) => println!("Sending message failed!")
- }
-}
+  match /*BUTTON[$send_message$,$submit$]*/(name, email, message) {
+    Ok(_) => println!("Message sent!"),
+    Err(_) => println!("Sending message failed!")
+  }
+}`;
+
+// language=TEXT
+let pySourceCode = `
+def contact_me():
+  /*TOOLTIP[$Write your name between the quotation marks$,$name$]*/ = """\n\t/*INPUT[$text$,$name$]*/"""
+  /*TOOLTIP[$Write your email between the quotation marks$,$email$]*/ = """\n\t/*INPUT[$text$,$email$]*/"""
+  /*TOOLTIP[$Write your message text below$,$message$]*/ = """\n\t/*TEXTAREA[$message$]*/"""
+  #
+  # After filling the required data tap on the
+  # 'send_message' function call to submit!
+  #
+
+  """
+    @param 'name'    - Your name.
+    @param 'email'   - Your email so I can respond back.
+    @param 'message' - Message you're sending me.
+  """
+  from portfolIO import send_message 
+  try:
+    /*BUTTON[$send_message$,$submit$]*/(name, email, message)
+    print("Message sent!")
+  except IOError:
+    print("Sending message failed!")
 `;
 
 export const contactSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
+	python: pySourceCode,
 };
