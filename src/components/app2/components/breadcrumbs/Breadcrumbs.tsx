@@ -20,20 +20,38 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 		this.highlight();
 	}
 
+	componentDidUpdate(): void {
+		this.highlight();
+	}
+
 	highlight() {
 		if (this.ref.current) {
 			let spaces = "";
 			for (let i = 0; i < window.location.pathname.length + 2; i++) {
 				spaces += " ";
 			}
-			let sourceCode = `/* NAVIGATION
- * /root${window.location.pathname === "/" ? "" : window.location.pathname}
- * ${spaces}^
- * ${spaces}|
- * ${spaces.substring(12)}You are here
- */`;
+			let cc;
+			let lang: ThemeContextLanguage = this.context.language;
+			switch (lang) {
+				case "c":
+					cc = "//";
+					break;
+				case "rust":
+					cc = "///";
+					break;
+				case "python":
+					cc = "#";
+					break;
 
-			let source = hlight(this.ref.current,sourceCode, {
+			}
+			let sourceCode = `${cc} NAVIGATION
+${cc} /root${window.location.pathname === "/" ? "" : window.location.pathname}
+${cc} ${spaces}^
+${cc} ${spaces}|
+${cc} ${spaces.substring(12)}You are here
+${cc} `;
+
+			let source = hlight(this.ref.current, sourceCode, {
 				language: this.context.language,
 				classPrefix: this.context.theme,
 			});
@@ -59,5 +77,6 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 		);
 	};
 }
+
 Breadcrumbs.contextType = ThemeContext;
 export default Breadcrumbs;

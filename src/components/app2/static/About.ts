@@ -104,9 +104,48 @@ static CONTACT: &[Contact] = &[
 ];
 `;
 
+// language=TEXT
+let pySourceCode = `
+ABOUT =  """${aboutDescription}""";
+
+#
+# You can download the copy of my resume by clicking on
+# variable below
+#
+with open("/static/pdf/resume.pdf", "r") as file:
+  /*ANCHOR[$resume$,$${resume}$]*/ = file.read()
+
+from datetime import datetime as dt
+class Education:
+  def __init__(self, institution, level, grad_date):
+    self.level = level
+    self.institution = institution
+    self.grad_date = grad_date
+
+education = [
+  ${aboutEducation.map(edu => eduFmt(edu, "python"))}
+]
+
+import enum
+class ContactType(enum.Enum):
+  Address = 0
+  Phone = 1
+  Email = 2
+
+class Contact:
+  def __init__(self, contact_type, value):
+    self.contact_type = contact_type
+    self.value = value
+
+contact_info = [
+  ${aboutContact.map(c => contactFmt(c, "python"))}
+]
+`;
+
 
 export const aboutSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
-	rust:rsSourceCode,
+	rust: rsSourceCode,
+	python: pySourceCode,
 };
 

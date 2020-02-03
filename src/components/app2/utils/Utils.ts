@@ -1,6 +1,7 @@
 import navigationLinks from "../components/nav/NavigationLinks";
 import * as cfmt from "./CFormat";
 import * as rsfmt from "./RustFormat";
+import * as pyfmt from "./PythonFormat";
 
 export const getThemeExt = (lang:ThemeContextLanguage):string =>{
 	switch (lang) {
@@ -20,7 +21,7 @@ export const pageNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 		case "rust":
 			return rsfmt.pageNavFmt(link);
 		case "python":
-			return "";
+			return pyfmt.pageNavFmt(link);
 
 	}
 };
@@ -32,7 +33,7 @@ export const linkNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 		case "rust":
 			return rsfmt.linkNavFmt(link);
 		case "python":
-			return "";
+			return pyfmt.linkNavFmt(link);
 
 	}
 };
@@ -44,7 +45,7 @@ export const skillFmt = (skill: Skill, lang: ThemeContextLanguage) => {
 		case "rust":
 			return rsfmt.skillFmt(skill);
 		case "python":
-			return "";
+			return pyfmt.skillFmt(skill);
 
 	}
 };
@@ -56,7 +57,7 @@ export const contactFmt = (contact: Contact, lang: ThemeContextLanguage): string
 		case "rust":
 			return rsfmt.contactFmt(contact);
 		case "python":
-			return "";
+			return pyfmt.contactFmt(contact);
 
 	}
 };
@@ -68,7 +69,7 @@ export const eduFmt = (edu: Education, lang: ThemeContextLanguage): string => {
 		case "rust":
 			return rsfmt.eduFmt(edu);
 		case "python":
-			return "";
+			return pyfmt.eduFmt(edu);
 
 	}
 };
@@ -80,7 +81,7 @@ export const socialFmt = (soc: Social, lang: ThemeContextLanguage): string => {
 		case "rust":
 			return rsfmt.socialFmt(soc);
 		case "python":
-			return "";
+			return pyfmt.socialFmt(soc);
 
 	}
 };
@@ -93,7 +94,7 @@ export const projFmt = (proj: Project, lang: ThemeContextLanguage) => {
 		case "rust":
 			return rsfmt.projFmt(proj);
 		case "python":
-			break;
+			return pyfmt.projFmt(proj);
 	}
 
 };

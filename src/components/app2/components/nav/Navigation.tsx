@@ -42,6 +42,7 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 				text = link.name.toLowerCase();
 				break;
 			case "python":
+				text = link.name.toLowerCase();
 				break;
 
 		}
@@ -56,7 +57,7 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 			case "rust":
 				return <div key={i} className={clname}>use crate::{elem};<br/></div>;
 			case "python":
-				return "";
+				return <div key={i} className={clname}>import {elem}<br/></div>;
 
 		}
 
