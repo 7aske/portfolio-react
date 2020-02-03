@@ -70,21 +70,7 @@ export const projects: Project[] = [
 		description: "Tiny webserver that serves my dotfiles and shell scripts for easy curl-ing on remote machines",
 		repository: "https://github.com/7aske/sh",
 		username: "7aske",
-	},
-	// , {
-	// 	img: java,
-	// 	name: "messaging-system",
-	// 	description: "University project messaging system built from ground up in Java",
-	// 	repository: "https://github.com/7aske/messaging-system",
-	// 	username: "7aske",
-	// }
-	// , {
-	// 	img: ts,
-	// 	name: "web-shop",
-	// 	description: "This is a work-in-progress simple web-shop completely designed and built from scratch using as least as possible frameworks for simplicity.",
-	// 	repository: "https://github.com/7aske/web-swehop",
-	// 	username: "7aske",
-	// },
+	}
 ];
 
 // language=TEXT
@@ -105,10 +91,32 @@ typedef struct project {
 } proj_t;
 
 static proj_t projects[${projects.length}] = {
-   ${projects.map(proj => projFmt(proj))}
+   ${projects.map(proj => projFmt(proj, "c"))}
 };
+`;
+
+// language=TEXT
+let rustSourceCode = `
+///
+/// Here you can find some of the more notable projects I had
+/// worked on. Projects have links to their respective repos.
+///
+
+enum Lang { C, PY, GO, JS, RUST, CPP, JAVA }
+
+struct Project {
+  lang: Lang,
+  name: &'static str,
+  desc: &'static str,
+  repo: &'static str,
+}
+
+static PROJECTS: &[Project] = &[
+    ${projects.map(proj => projFmt(proj, "rust"))}
+];
 `;
 
 export const projectsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
+	rust: rustSourceCode
 };

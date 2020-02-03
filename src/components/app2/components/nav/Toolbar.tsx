@@ -1,7 +1,8 @@
 import React, { createRef } from "react";
 import navigationLinks from "./NavigationLinks";
-import { ThemeContext, themes } from "../styling/ThemeContext";
+import { languages, ThemeContext, themes } from "../styling/ThemeContext";
 import { Link } from "react-router-dom";
+import { getThemeExt } from "../../utils/Utils";
 
 export type HeaderHref = {
 	href: string;
@@ -22,10 +23,7 @@ class Toolbar extends React.Component<any, NavigationState> {
 		super(props);
 		this.state = {links: navigationLinks};
 		this.changeTheme = this.changeTheme.bind(this);
-	}
-
-	componentDidMount(): void {
-		console.log(this.context);
+		this.changeLang = this.changeLang.bind(this);
 	}
 
 	changeTheme() {
@@ -37,13 +35,33 @@ class Toolbar extends React.Component<any, NavigationState> {
 		}
 	}
 
+	changeLang() {
+		let index = languages.indexOf(this.context.language);
+		if (index === languages.length - 1) {
+			this.props.changeTheme({language: languages[0]});
+		} else {
+			this.props.changeTheme({language: languages[index + 1]});
+		}
+	}
+
 	render() {
 		return (
-			<nav ref={this.navRef} className="bg-def-1" style={{userSelect:"none"}}>
+			<nav ref={this.navRef} className="bg-def-1" style={{userSelect: "none"}}>
 				<div className="nav-wrapper container">
-					<Link className="brand-logo left show-on-medium-and-up hide-on-small-and-down" to={"/"}>portfolio.{this.context.language}</Link>
+					<Link className="brand-logo left show-on-medium-and-up hide-on-small-and-down"
+						  to={"/"}>portfolio.{getThemeExt(this.context.language)}</Link>
 					<Link className="brand-logo left show-on-small hide-on-med-and-up" to={"/"}>nt</Link>
-					<a style={{cursor:"pointer", textDecoration:"underline"}} onClick={this.changeTheme} className="right">{this.context.theme}</a>
+					<ul className="right">
+						<li>
+							<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={this.changeTheme}
+							   className="right">{this.context.theme}</a>
+						</li>
+						<li>
+							<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={this.changeLang}
+							   className="right">{this.context.language}</a>
+						</li>
+					</ul>
+
 				</div>
 			</nav>
 		);

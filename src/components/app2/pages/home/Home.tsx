@@ -38,7 +38,7 @@ class Home extends React.Component<HomeProps, HomeState> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation otherImports={["stdio.h"]}/>
+				<Navigation/>
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);

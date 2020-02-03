@@ -1,100 +1,111 @@
 import navigationLinks from "../components/nav/NavigationLinks";
+import * as cfmt from "./CFormat";
+import * as rsfmt from "./RustFormat";
 
-export const urlFmt = (href: string, name: string): string => {
+export const getThemeExt = (lang:ThemeContextLanguage):string =>{
+	switch (lang) {
+		case "c":
+			return "c";
+		case "rust":
+			return "rs";
+		case "python":
+			return "py";
+	}
+};
+
+export const pageNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): string => {
+	switch (lang) {
+		case "c":
+			return cfmt.pageNavFmt(link);
+		case "rust":
+			return rsfmt.pageNavFmt(link);
+		case "python":
+			return "";
+
+	}
+};
+
+export const linkNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): string => {
+	switch (lang) {
+		case "c":
+			return cfmt.linkNavFmt(link);
+		case "rust":
+			return rsfmt.linkNavFmt(link);
+		case "python":
+			return "";
+
+	}
+};
+
+export const skillFmt = (skill: Skill, lang: ThemeContextLanguage) => {
+	switch (lang) {
+		case "c":
+			return cfmt.skillFmt(skill);
+		case "rust":
+			return rsfmt.skillFmt(skill);
+		case "python":
+			return "";
+
+	}
+};
+
+export const contactFmt = (contact: Contact, lang: ThemeContextLanguage): string => {
+	switch (lang) {
+		case "c":
+			return cfmt.contactFmt(contact);
+		case "rust":
+			return rsfmt.contactFmt(contact);
+		case "python":
+			return "";
+
+	}
+};
+
+export const eduFmt = (edu: Education, lang: ThemeContextLanguage): string => {
+	switch (lang) {
+		case "c":
+			return cfmt.eduFmt(edu);
+		case "rust":
+			return rsfmt.eduFmt(edu);
+		case "python":
+			return "";
+
+	}
+};
+
+export const socialFmt = (soc: Social, lang: ThemeContextLanguage): string => {
+	switch (lang) {
+		case "c":
+			return cfmt.socialFmt(soc);
+		case "rust":
+			return rsfmt.socialFmt(soc);
+		case "python":
+			return "";
+
+	}
+};
+
+
+export const projFmt = (proj: Project, lang: ThemeContextLanguage) => {
+	switch (lang) {
+		case "c":
+			return cfmt.projFmt(proj);
+		case "rust":
+			return rsfmt.projFmt(proj);
+		case "python":
+			break;
+	}
+
+};
+
+export const pageNav = (pathname: string, lang: ThemeContextLanguage): string => {
+	return navigationLinks.filter(page => !pathname.endsWith(page.href)).map(page => pageNavFmt(page, lang)).join("\n");
+};
+
+// ANCHORS
+
+export const anchorFmt = (href: string, name: string): string => {
 	return `<a class='fg-accent-1' href='${href}'>${name}</a>`;
-};
-
-export const pageNav = (pathname: string): string => {
-	return navigationLinks.filter(page => !pathname.endsWith(page.href)).map(page => pageNavFmt(page)).join("\n");
-};
-
-export const pageNavFmt = (link: NavigationLink): string => {
-	return `#include "/*ANCHOR[$${link.name.toLowerCase()}.h$,$${link.href}$]*/"`;
-};
-
-export const linkNavFmt = (link: NavigationLink): string => {
-	return `#include "${link.name.toLowerCase()}.h"`;
-};
-
-export const skillFmt = (skill: Skill) => {
-	let skillName = skill.name.replace(" ", "_").toUpperCase();
-	let out = `static uint8_t ${skillName} = 0x${skill.confidence.toString(16)};\n`;
-	if (skill.frameworks) {
-		skill.frameworks.forEach(fw => {
-			out += `static uint8_t ${skillName}_${fw.name.replace(" ", "_").toUpperCase()} = 0x${fw.confidence.toString(16)};\n`;
-		});
-	}
-	out += "\n";
-	return out;
-};
-
-export const contactFmt = (contact: Contact): string => {
-	return `{
-    .type= "${contact.type}",
-    .value= "${contact.type === "email" ? `/*ANCHOR[$${contact.value}$,$mailto://${contact.value}$]*/` : contact.value}"
-  }`;
-};
-
-export const eduFmt = (edu: Education): string => {
-	return `{
-    .level= "${edu.level}",
-    .institution= "${edu.institution}",
-    .grad_date= ${edu.grad_year ? `{.tm_year= ${edu.grad_year}}` : "{}"}
-  }`;
-};
-
-export const socialFmt = (soc: Social): string => {
-	return `{
-    .name= "${soc.name}",
-    .url= "/*ANCHOR[$${soc.url}$,$${soc.url}$]*/",
-  }`;
-};
-
-
-export const projFmt = (proj: Project) => {
-	let lang_tooltip = "";
-	switch (proj.type) {
-		case "C":
-			lang_tooltip = "C programming language";
-			break;
-		case "PY":
-			lang_tooltip = "Python 3";
-			break;
-		case "JS":
-			lang_tooltip = "JavaScript ES6+";
-			break;
-		case "GO":
-			lang_tooltip = "GoLang";
-			break;
-		case "RUST":
-			lang_tooltip = "Rust programming language";
-			break;
-		case "CPP":
-			lang_tooltip = "C++ programming language";
-			break;
-		case "TS":
-			lang_tooltip = "TypeScript";
-			break;
-		case "JAVA":
-			lang_tooltip = "Java";
-			break;
-		case "BASH":
-			lang_tooltip = "Bash scripting";
-			break;
-
-	}
-
-	// .desc= "${fold(proj.description, 60, 1)}",
-	return `{
-    .type= /*TOOLTIP[$${lang_tooltip}$,$${proj.type}$]*/,
-    .name= "${proj.name}",
-    .desc= "${proj.description}",
-    .repo= "/*ANCHOR[$${proj.repository}$,$${proj.repository}$]*/"
-  }`;
-};
-
-export const tooltipFmt = (name: string, tooltip: string) => {
-	return `<a style="cursor: help" class="tooltipped fg-accent-1" data-position="top" data-tooltip="${tooltip}">${name}</a>`;
 };
 
 
@@ -105,13 +116,21 @@ export const parseAnchors = (source: string): string => {
 		safetyCheck--;
 		res = source.match(/\/\*ANCHOR\[\$(.+)\$,\$(.+)\$]\*\//);
 		if (res && res.length === 3) {
-			source = source.replace(res[0], urlFmt(res[2], res[1]));
+			source = source.replace(res[0], anchorFmt(res[2], res[1]));
 		}
 		if (safetyCheck === 0) {
 			break;
 		}
 	} while (res);
 	return source;
+};
+
+// ANCHORS
+
+// TOOLTIPS
+
+export const tooltipFmt = (name: string, tooltip: string) => {
+	return `<a style="cursor: help" class="tooltipped fg-accent-1" data-position="top" data-tooltip="${tooltip}">${name}</a>`;
 };
 
 export const parseTooltips = (source: string): string => {
@@ -129,6 +148,10 @@ export const parseTooltips = (source: string): string => {
 	} while (res);
 	return source;
 };
+
+// END TOOLTIPS
+
+// TEXTAREAS
 
 export const fmtTextarea = (name: string, placeholder: string): string => {
 	return `<textarea class="bg-dark-0 embedded hljs-string browser-default" required placeholder="${placeholder}" name="${name}">${placeholder}</textarea>`;
@@ -151,6 +174,9 @@ export const parseTextareas = (source: string): string => {
 	return source;
 };
 
+// END TEXTAREAS
+
+// INPUTS
 
 export const fmtInput = (name: string, type: string, placeholder: string): string => {
 	if (name === "email") {
@@ -178,6 +204,10 @@ export const parseInputs = (source: string): string => {
 	return source;
 };
 
+// END INPUTS
+
+// BUTTONS
+
 export const fmtButton = (name: string, type: string): string => {
 	return `<button class="fg-accent-1 bg-dark-0"  name="${name}" type="${type}" >${name}</button>`;
 };
@@ -198,6 +228,8 @@ export const parseButtons = (source: string): string => {
 	} while (res);
 	return source;
 };
+
+// END BUTTONS
 
 const isWs = (x: string): boolean => {
 	let white = new RegExp(/^\s$/);

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { createRef, RefObject } from "react";
-import { skills, skillsSourceCode } from "../../static/Skills";
-import { pageNav, skillFmt } from "../../utils/Utils";
+import { skillsSourceCode } from "../../static/Skills";
 import { hlight } from "../../utils/Highlighter";
 import { ThemeContext } from "../../components/styling/ThemeContext";
 import Navigation from "../../components/nav/Navigation";

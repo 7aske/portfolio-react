@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createRef } from "react";
-import { urlFmt } from "../../utils/Utils";
+import { anchorFmt } from "../../utils/Utils";
 import { hlight } from "../../utils/Highlighter";
 import { ThemeContext } from "../styling/ThemeContext";
 
@@ -42,9 +42,9 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 				res.forEach(match => {
 					if (match !== "/span") {
 						if (match === "/root") {
-							source = source.replace(match, urlFmt("/", match));
+							source = source.replace(match, anchorFmt("/", match));
 						} else if (match.length > 2) {
-							source = source.replace(match, urlFmt(match, match));
+							source = source.replace(match, anchorFmt(match, match));
 						}
 					}
 				});

@@ -44,21 +44,20 @@ export const aboutContact: Contact[] = [
 let cSourceCode = `
 static char about[1024] = "${aboutDescription}";
 
+/*
+ * You can download the copy of my resume by clicking on the function declaration.
+ * @param 'fileptr' - file to be downloaded
+ */
+extern void /*ANCHOR[$download_resume$,$${resume}$]*/(FILE* fileptr);
+
 typedef struct education {
   char level[64];
   char institution[128];
   struct tm grad_date;
 } edu_t;
 
-/*
- * You can download the copy of my resume by clicking on the function declaration.
- * @returns - returns the buffer containing the contents of file
- *            pointed to by'fileptr'
- */
-extern void /*ANCHOR[$download_resume$,$${resume}$]*/(FILE* fileptr);
-
 static edu_t education[${aboutEducation.length}] = {
-  ${aboutEducation.map(edu => eduFmt(edu))}
+  ${aboutEducation.map(edu => eduFmt(edu, "c"))}
 }
 
 typedef struct contact {
@@ -67,12 +66,47 @@ typedef struct contact {
 } contact_t;
 
 static contact_t contact_info[${aboutContact.length}] = {
-  ${aboutContact.map(c => contactFmt(c))}
+  ${aboutContact.map(c => contactFmt(c, "c"))}
 }
+`;
+
+// language=TEXT
+let rsSourceCode = `
+use datetime::Year;
+
+static ABOUT: &str =  "${aboutDescription}";
+
+
+///
+/// You can download the copy of my resume by clicking variable below.
+///
+static /*ANCHOR[$RESUME$,$${resume}$]*/: &str = "/static/pdf/resume.pdf";
+
+struct Education {
+  institution: &'static str,
+  level: &'static str,
+  grad_date: &'static Year,
+}
+
+static EDUCATION: &[Education] = &[
+  ${aboutEducation.map(edu => eduFmt(edu, "rust"))}
+];
+
+enum ContactType { Address, Phone, Email }
+
+struct Contact {
+  contact_type: &'static str,
+  value: &'static str,
+}
+
+static CONTACT: &[Contact] = &[
+  ${aboutContact.map(c => contactFmt(c, "rust"))}
+];
 `;
 
 
 export const aboutSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
+	rust:rsSourceCode,
 };
 

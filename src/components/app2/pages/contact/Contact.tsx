@@ -85,7 +85,7 @@ class Contact extends React.Component<ContactProps, ContactState> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation otherImports={["stdio.h", "requests/contact.h"]}/>
+				<Navigation/>
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);

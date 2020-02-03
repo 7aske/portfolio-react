@@ -5,6 +5,5 @@ export const themes: ThemeContextTheme[] = ["darcula", "atom-one-dark", "railsca
 export const languages: ThemeContextLanguage[] = ["c", "rust", "python"];
 export const extensions: ThemeContextExtension[] = ["c", "rs", "py"];
 export const modes: ThemeContextMode[] = ["light", "dark"];
-export const defaultTheme: Theme = {mode: "dark", theme: "darcula", language: "c"};
-
+export const defaultTheme: Theme = {mode: "dark", theme: "darcula", language: "rust"};
 export const ThemeContext = React.createContext(defaultTheme);

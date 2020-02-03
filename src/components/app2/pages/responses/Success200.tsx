@@ -1,7 +1,5 @@
 import * as React from "react";
 import { createRef } from "react";
-import hljs from "highlight.js";
-import { pageNav, parseAnchors } from "../../utils/Utils";
 import { ThemeContext } from "styled-components";
 import { hlight } from "../../utils/Highlighter";
 import Navigation from "../../components/nav/Navigation";
@@ -47,7 +45,7 @@ class Success200 extends React.Component<any, any> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation otherImports={["nav.h"]}/>
+				<Navigation/>
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);

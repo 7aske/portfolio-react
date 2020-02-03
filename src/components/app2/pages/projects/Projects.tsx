@@ -19,6 +19,7 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
 	componentDidMount(): void {
 		this.highlight();
 	}
+
 	componentDidUpdate(): void {
 		this.highlight();
 	}
@@ -35,7 +36,7 @@ class Projects extends React.Component<ProjectsProps, ProjectsState> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation />
+				<Navigation/>
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);

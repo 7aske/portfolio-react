@@ -10,8 +10,11 @@ type HighlighterOptions = {
 }
 
 export const hlight = (elem: Element, code: string, options: HighlighterOptions): string => {
+	if (!code){
+		return "";
+	}
 	hljs.configure({classPrefix: options.classPrefix ? options.classPrefix + "-hljs-" : "hljs-", useBR: options.useBR});
-	let highlighted = hljs.highlight("c", code).value;
+	let highlighted = hljs.highlight(options.language, code).value;
 	highlighted = parseAnchors(highlighted);
 	highlighted = parseTooltips(highlighted);
 	highlighted = parseButtons(highlighted);

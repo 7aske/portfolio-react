@@ -1,6 +1,5 @@
 import * as React from "react";
 import { createRef } from "react";
-import { pageNav } from "../../utils/Utils";
 import { hlight } from "../../utils/Highlighter";
 import { ThemeContext } from "../../components/styling/ThemeContext";
 import Navigation from "../../components/nav/Navigation";
@@ -46,7 +45,7 @@ class Error400 extends React.Component<any, any> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation otherImports={["nav.h"]}/>
+				<Navigation />
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);

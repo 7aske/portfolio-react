@@ -20,6 +20,7 @@ class About extends React.Component<AboutProps, AboutState> {
 	componentDidMount(): void {
 		this.highlight();
 	}
+
 	componentDidUpdate(): void {
 		this.highlight();
 	}
@@ -37,7 +38,7 @@ class About extends React.Component<AboutProps, AboutState> {
 	render() {
 		return (
 			<div className="container">
-				<Navigation otherImports={["time.h", "io/dload.h"]}/>
+				<Navigation/>
 				<pre ref={this.ref} className="fg-accent-2 left-align"/>
 			</div>
 		);
