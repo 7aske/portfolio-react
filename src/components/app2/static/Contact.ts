@@ -73,8 +73,31 @@ def contact_me():
     print("Sending message failed!")
 `;
 
+// language=TEXT
+let goSourceCode = `
+func ContactMe() (string, error) {
+  // 'name'    - Your name.
+  // 'email'   - Your email so I can respond back.
+  // 'message' - Message you're sending me.
+  /*TOOLTIP[$Write your name between the quotation marks$,$name$]*/ := \`\n\t/*INPUT[$text$,$name$]*/\`
+  /*TOOLTIP[$Write your email between the quotation marks$,$email$]*/ := \`\n\t/*INPUT[$text$,$email$]*/\`
+  /*TOOLTIP[$Write your message text below$,$message$]*/ := \`\n\t/*TEXTAREA[$message$]*/\`
+
+
+  // After filling the required data tap on the
+  // 'SendMessage' function call to submit!
+  //
+  err := requests./*BUTTON[$SendMessage$,$submit$]*/(name, email, message)
+  if err != nil {
+    return "Sending message failed!", err
+  }  
+  return "Message sent!", nil
+}
+`;
+
 export const contactSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
+	go: goSourceCode,
 };

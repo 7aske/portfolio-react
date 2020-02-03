@@ -34,6 +34,7 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 			let lang: ThemeContextLanguage = this.context.language;
 			switch (lang) {
 				case "c":
+				case "go":
 					cc = "//";
 					break;
 				case "rust":
@@ -42,8 +43,8 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 				case "python":
 					cc = "#";
 					break;
-
 			}
+
 			let sourceCode = `${cc} NAVIGATION
 ${cc} /root${window.location.pathname === "/" ? "" : window.location.pathname}
 ${cc} ${spaces}^

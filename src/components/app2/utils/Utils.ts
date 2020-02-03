@@ -2,6 +2,7 @@ import navigationLinks from "../components/nav/NavigationLinks";
 import * as cfmt from "./CFormat";
 import * as rsfmt from "./RustFormat";
 import * as pyfmt from "./PythonFormat";
+import * as gofmt from "./GoLangFormat";
 
 export const getThemeExt = (lang:ThemeContextLanguage):string =>{
 	switch (lang) {
@@ -11,6 +12,8 @@ export const getThemeExt = (lang:ThemeContextLanguage):string =>{
 			return "rs";
 		case "python":
 			return "py";
+		case "go":
+			return "go";
 	}
 };
 
@@ -22,6 +25,8 @@ export const pageNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 			return rsfmt.pageNavFmt(link);
 		case "python":
 			return pyfmt.pageNavFmt(link);
+		case "go":
+			return gofmt.pageNavFmt(link);
 
 	}
 };
@@ -34,11 +39,13 @@ export const linkNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 			return rsfmt.linkNavFmt(link);
 		case "python":
 			return pyfmt.linkNavFmt(link);
+		case "go":
+			return gofmt.linkNavFmt(link);
 
 	}
 };
 
-export const skillFmt = (skill: Skill, lang: ThemeContextLanguage) => {
+export const skillFmt = (skill: Skill, lang: ThemeContextLanguage):string => {
 	switch (lang) {
 		case "c":
 			return cfmt.skillFmt(skill);
@@ -46,6 +53,8 @@ export const skillFmt = (skill: Skill, lang: ThemeContextLanguage) => {
 			return rsfmt.skillFmt(skill);
 		case "python":
 			return pyfmt.skillFmt(skill);
+		case "go":
+			return gofmt.skillFmt(skill);
 
 	}
 };
@@ -58,6 +67,8 @@ export const contactFmt = (contact: Contact, lang: ThemeContextLanguage): string
 			return rsfmt.contactFmt(contact);
 		case "python":
 			return pyfmt.contactFmt(contact);
+		case "go":
+			return gofmt.contactFmt(contact);
 
 	}
 };
@@ -70,6 +81,8 @@ export const eduFmt = (edu: Education, lang: ThemeContextLanguage): string => {
 			return rsfmt.eduFmt(edu);
 		case "python":
 			return pyfmt.eduFmt(edu);
+		case "go":
+			return gofmt.eduFmt(edu);
 
 	}
 };
@@ -82,12 +95,14 @@ export const socialFmt = (soc: Social, lang: ThemeContextLanguage): string => {
 			return rsfmt.socialFmt(soc);
 		case "python":
 			return pyfmt.socialFmt(soc);
+		case "go":
+			return gofmt.socialFmt(soc);
 
 	}
 };
 
 
-export const projFmt = (proj: Project, lang: ThemeContextLanguage) => {
+export const projFmt = (proj: Project, lang: ThemeContextLanguage):string => {
 	switch (lang) {
 		case "c":
 			return cfmt.projFmt(proj);
@@ -95,6 +110,8 @@ export const projFmt = (proj: Project, lang: ThemeContextLanguage) => {
 			return rsfmt.projFmt(proj);
 		case "python":
 			return pyfmt.projFmt(proj);
+		case "go":
+			return gofmt.projFmt(proj);
 	}
 
 };

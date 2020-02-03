@@ -23,9 +23,7 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 			case "rust":
 				return <div key={i} className={clname}>use {imp};<br/></div>;
 			case "python":
-				// return <div key={i} className={clname}>#include &lt;{imp}&gt;<br/></div>;
-				return "";
-
+				return <div key={i} className={clname}>import {imp}<br/></div>;
 		}
 	}
 
@@ -44,6 +42,9 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 			case "python":
 				text = link.name.toLowerCase();
 				break;
+			case "go":
+				text = link.name.toLowerCase();
+				break;
 
 		}
 		if (!link.href.startsWith("http")) {
@@ -58,6 +59,8 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 				return <div key={i} className={clname}>use crate::{elem};<br/></div>;
 			case "python":
 				return <div key={i} className={clname}>import {elem}<br/></div>;
+			case "go":
+				return <div key={i} className={clname}>  "{elem}"<br/></div>;
 
 		}
 
@@ -68,11 +71,13 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 		return (
 			<pre className="fg-accent-2 left-align">
 				<Breadcrumbs/>
+				{this.context.language === "go" ?`module ${window.location.pathname.substring(1)}\n\nimport (` : ""}
 				{this.props.otherImports ? this.props.otherImports.map((imp, i) => this.defaultImport(imp, i)) : ""}
 				<br/>
 				{this.state.navLinks.map((link, i) => {
 					return this.linkImport(link, i);
 				})}
+				{this.context.language === "go" ?")" : ""}
 			</pre>
 		);
 	};

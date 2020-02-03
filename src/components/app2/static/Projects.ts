@@ -80,7 +80,7 @@ let cSourceCode = `
  * worked on. Projects have links to their respective repos.
  */
 
-enum LANG { C, PY, GO, JS, RUST, CPP, JAVA };
+enum LANG { C, PY, GO, JS, TS, RUST, CPP, JAVA };
 
 typedef struct project {
   enum LANG lang;
@@ -123,14 +123,15 @@ let pySourceCode = `
 #
 
 import enum
-class ProjType(enum.Enum):
-  C = 0
-  PY = 1
-  GO = 2
-  JS = 3
-  RUST = 4
-  CPP = 5
-  JAVA = 6
+class Lang(enum.Enum):
+  C    = 0
+  PY   = 1
+  GO   = 2
+  JS   = 3
+  TS   = 4
+  RUST = 5
+  CPP  = 6
+  JAVA = 7
 
 class Project:
   def __init__(self, lang, name, desc, repo):
@@ -144,8 +145,41 @@ projects = [
 ]
 `;
 
+// language=TEXT
+let goSourceCode = `
+//
+// Here you can find some of the more notable projects I had
+// worked on. Projects have links to their respective repos.
+//
+
+type Lang string
+
+const (
+  C       Lang = "c"
+  Python  Lang = "python"
+  Go      Lang = "go"
+  Js      Lang = "js"
+  Ts      Lang = "ts"
+  Rust    Lang = "rust"
+  Cpp     Lang = "cpp"
+  Java    Lang = "java"
+)
+
+type Project struct {
+  Language     Lang
+  Name         string
+  Description  string
+  Repository   string
+}
+
+var Projects = []Project{
+  ${projects.map(proj => projFmt(proj, "go")).join(" ")}
+}
+`;
+
 export const projectsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rustSourceCode,
 	python: pySourceCode,
+	go: goSourceCode,
 };

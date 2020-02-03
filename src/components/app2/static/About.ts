@@ -142,10 +142,49 @@ contact_info = [
 ]
 `;
 
+// language=TEXT
+let goSourceCode = `
+const About =  \`${aboutDescription}\`
+
+//
+// You can download the copy of my resume by clicking on
+// variable below
+//
+const /*ANCHOR[$Resume$,$${resume}$]*/ = "/static/pdf/resume.pdf" 
+
+type Education struct {
+  Level       string
+  Institution string
+  GradDate    uint
+}
+
+var MyEducation = []Education{
+  ${aboutEducation.map(edu => eduFmt(edu, "go")).join(" ")}
+}
+
+type ContactType string
+
+const (
+  Address  ContactType = "address"
+  Phone    ContactType = "phone"
+  Email    ContactType = "email"
+)
+
+type Contact struct {
+  Type   ContactType
+  Value  string 
+}
+
+var ContactInfo = []Contact{
+  ${aboutContact.map(c => contactFmt(c, "go")).join(" ")}
+}
+`;
+
 
 export const aboutSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
+	go: goSourceCode,
 };
 

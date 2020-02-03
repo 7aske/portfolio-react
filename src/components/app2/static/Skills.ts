@@ -12,12 +12,15 @@ export const skills: Skill[] = [{
 		confidence: 80,
 	}, {
 		name: "React",
-		confidence: 70,
+		confidence: 69,
 	}, {
 		name: "Express",
-		confidence: 80,
+		confidence: 81,
 	}, {
 		name: "Electron",
+		confidence: 72,
+	}, {
+		name: "Typescript",
 		confidence: 70,
 	}],
 }, {
@@ -25,24 +28,24 @@ export const skills: Skill[] = [{
 	confidence: 75,
 	frameworks: [{
 		name: "Flask",
-		confidence: 65,
+		confidence: 67,
 	}],
 }, {
 	name: "Rust",
-	confidence: 60,
+	confidence: 63,
 }, {
 	name: "Go",
-	confidence: 65,
+	confidence: 66,
 	frameworks: [{
 		name: "gorilla",
-		confidence: 50,
+		confidence: 48,
 	}],
 }, {
 	name: "Java",
 	confidence: 70,
 	frameworks: [{
 		name: "Spring Boot",
-		confidence: 45,
+		confidence: 44,
 	}, {
 		name: "Thymeleaf",
 		confidence: 55,
@@ -128,9 +131,23 @@ let pySourceCode = `
 ${skills.map(skill => skillFmt(skill, "python")).join("\n")}
 `;
 
+// language=TEXT
+let goSourceCode = `
+/* 
+ *  These represent confidence I have in a certain
+ *  language, technology or framework.
+ *  Confidence values range from 0x00 to 0x${(100).toString(16)}.
+ *  Naturally numbers are in hex.
+ */ 
+const (
+${skills.map(skill => skillFmt(skill, "go")).join("\n")}
+)
+`;
+
 export const skillsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
+	go: goSourceCode,
 };
 

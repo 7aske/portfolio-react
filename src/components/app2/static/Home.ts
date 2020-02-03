@@ -56,9 +56,29 @@ if __name__ == "__main__":
   main()
 `;
 
+// language=TEXT
+let goSourceCode = `
+const GreetingMessage = \`${greetingMessage("go")}\`
+
+type Social struct {
+  Name  string
+  Url   string
+}
+
+var Socials = []Social{
+  ${socialMedia.map(soc => socialFmt(soc, "go")).join(" ")}
+}
+
+func main() {
+  fmt.Println(GreetingMessage)
+  fmt.Println("Hello, World!")
+}
+`;
+
 export const homeSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
+	go: goSourceCode,
 };
 
