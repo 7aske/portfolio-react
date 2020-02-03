@@ -14,7 +14,6 @@ export const skillFmt = (skill: Skill) => {
 			out += `${skillName}_${fw.name.replace(" ", "_").toUpperCase()} = 0x${fw.confidence.toString(16)}\n`;
 		});
 	}
-	out += "\n";
 	return out;
 };
 

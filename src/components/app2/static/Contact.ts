@@ -55,10 +55,6 @@ def contact_me():
   /*TOOLTIP[$Write your name between the quotation marks$,$name$]*/ = """\n\t/*INPUT[$text$,$name$]*/"""
   /*TOOLTIP[$Write your email between the quotation marks$,$email$]*/ = """\n\t/*INPUT[$text$,$email$]*/"""
   /*TOOLTIP[$Write your message text below$,$message$]*/ = """\n\t/*TEXTAREA[$message$]*/"""
-  #
-  # After filling the required data tap on the
-  # 'send_message' function call to submit!
-  #
 
   """
     @param 'name'    - Your name.
@@ -67,6 +63,10 @@ def contact_me():
   """
   from portfolIO import send_message 
   try:
+    #
+    # After filling the required data tap on the
+    # 'send_message' function call to submit!
+    #
     /*BUTTON[$send_message$,$submit$]*/(name, email, message)
     print("Message sent!")
   except IOError:

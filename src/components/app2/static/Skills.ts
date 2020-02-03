@@ -101,7 +101,7 @@ let cSourceCode = `
  * Naturally numbers are in hex.
  */
 
-${skills.map(skill => skillFmt(skill, "c")).join("")}
+${skills.map(skill => skillFmt(skill, "c")).join("\n")}
 `;
 
 // language=TEXT
@@ -113,7 +113,7 @@ let rsSourceCode = `
 /// Naturally numbers are in hex.
 ///
 
-${skills.map(skill => skillFmt(skill, "rust")).join("")}
+${skills.map(skill => skillFmt(skill, "rust")).join("\n")}
 `;
 
 // language=TEXT
@@ -125,7 +125,7 @@ let pySourceCode = `
 #  Naturally numbers are in hex.
 # 
 
-${skills.map(skill => skillFmt(skill, "python")).join("")}
+${skills.map(skill => skillFmt(skill, "python")).join("\n")}
 `;
 
 export const skillsSourceCode: { [key: string]: string } = {

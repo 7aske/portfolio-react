@@ -57,7 +57,7 @@ typedef struct education {
 } edu_t;
 
 static edu_t education[${aboutEducation.length}] = {
-  ${aboutEducation.map(edu => eduFmt(edu, "c"))}
+  ${aboutEducation.map(edu => eduFmt(edu, "c")).join(", ")}
 }
 
 typedef struct contact {
@@ -66,7 +66,7 @@ typedef struct contact {
 } contact_t;
 
 static contact_t contact_info[${aboutContact.length}] = {
-  ${aboutContact.map(c => contactFmt(c, "c"))}
+  ${aboutContact.map(c => contactFmt(c, "c")).join(", ")}
 }
 `;
 
@@ -89,7 +89,7 @@ struct Education {
 }
 
 static EDUCATION: &[Education] = &[
-  ${aboutEducation.map(edu => eduFmt(edu, "rust"))}
+  ${aboutEducation.map(edu => eduFmt(edu, "rust")).join(", ")}
 ];
 
 enum ContactType { Address, Phone, Email }
@@ -100,7 +100,7 @@ struct Contact {
 }
 
 static CONTACT: &[Contact] = &[
-  ${aboutContact.map(c => contactFmt(c, "rust"))}
+  ${aboutContact.map(c => contactFmt(c, "rust")).join(", ")}
 ];
 `;
 
@@ -117,13 +117,13 @@ with open("/static/pdf/resume.pdf", "r") as file:
 
 from datetime import datetime as dt
 class Education:
-  def __init__(self, institution, level, grad_date):
+  def __init__(self, institution: str, level: str, grad_date: dt = None):
     self.level = level
     self.institution = institution
     self.grad_date = grad_date
 
 education = [
-  ${aboutEducation.map(edu => eduFmt(edu, "python"))}
+  ${aboutEducation.map(edu => eduFmt(edu, "python")).join(", ")}
 ]
 
 import enum
@@ -133,12 +133,12 @@ class ContactType(enum.Enum):
   Email = 2
 
 class Contact:
-  def __init__(self, contact_type, value):
+  def __init__(self, contact_type: ContactType, value: str):
     self.contact_type = contact_type
     self.value = value
 
 contact_info = [
-  ${aboutContact.map(c => contactFmt(c, "python"))}
+  ${aboutContact.map(c => contactFmt(c, "python")).join(", ")}
 ]
 `;
 

@@ -9,7 +9,7 @@ import Contact from "./pages/contact/Contact";
 import Success200 from "./pages/responses/Success200";
 import Error429 from "./pages/responses/Error429";
 import Error400 from "./pages/responses/Error400";
-import { defaultTheme, ThemeContext } from "./components/styling/ThemeContext";
+import { defaultTheme, languages, ThemeContext, themes } from "./components/styling/ThemeContext";
 import Toolbar from "./components/nav/Toolbar";
 import "./App.css";
 import "../../assets/stylesheets/theme.css";
@@ -32,15 +32,37 @@ class App extends React.Component<any, { theme: Theme }> {
 	}
 
 	changeTheme(theme: Theme) {
+		const params = new URLSearchParams(window.location.search);
 		const curr = this.state.theme;
 		for (let prop in theme) {
 			if (theme.hasOwnProperty(prop)) {
+				params.set(prop, theme[prop]);
 				curr[prop] = theme[prop];
 			}
 		}
+		if (window.history.pushState) {
+			const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + params.toString();
+			window.history.pushState({path: newurl}, "", newurl);
+		}
+
 		this.setState({theme: curr});
 	}
 
+	componentDidMount(): void {
+		const params = new URLSearchParams(window.location.search);
+		const language = params.get("language") as ThemeContextLanguage | null;
+		const theme = params.get("theme") as ThemeContextTheme | null;
+		const state = {
+			theme: defaultTheme,
+		};
+		if (language && languages.indexOf(language)) {
+			state.theme.language = language;
+		}
+		if (theme && themes.indexOf(theme)) {
+			state.theme.theme = theme;
+		}
+		this.setState(state);
+	}
 
 	render() {
 		return (

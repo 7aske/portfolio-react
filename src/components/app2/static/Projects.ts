@@ -91,7 +91,7 @@ typedef struct project {
 } proj_t;
 
 static proj_t projects[${projects.length}] = {
-   ${projects.map(proj => projFmt(proj, "c"))}
+   ${projects.map(proj => projFmt(proj, "c")).join(", ")}
 };
 `;
 
@@ -112,7 +112,7 @@ struct Project {
 }
 
 static PROJECTS: &[Project] = &[
-    ${projects.map(proj => projFmt(proj, "rust"))}
+    ${projects.map(proj => projFmt(proj, "rust")).join(", ")}
 ];
 `;
 // language=TEXT
@@ -140,7 +140,7 @@ class Project:
     self.repo = repo
 
 projects = [
-  ${projects.map(proj => projFmt(proj, "python"))}
+  ${projects.map(proj => projFmt(proj, "python")).join(", ")}
 ]
 `;
 
