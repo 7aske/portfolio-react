@@ -32,7 +32,8 @@
     "build-server": "cd server-src && tsc --build tsconfig.json",
     "build": "react-scripts build && npm run build-server",
     "start-server-dev": "nodemon --config nodemon.json",
-    "start-server": "node build/server.js"
+    "start-server": "node build/server.js",
+    "deploy": "rsync -have ssh build root@7aske.com:/srv/goose/instances/portfolio-react/"
   },
   "eslintConfig": {
     "extends": "react-app"
