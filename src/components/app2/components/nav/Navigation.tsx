@@ -45,6 +45,9 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 			case "go":
 				text = link.name.toLowerCase();
 				break;
+			case "bash":
+				text = link.name.toLowerCase()+".sh";
+				break;
 
 		}
 		if (!link.href.startsWith("http")) {
@@ -61,6 +64,8 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 				return <div key={i} className={clname}>import {elem}<br/></div>;
 			case "go":
 				return <div key={i} className={clname}>  "{elem}"<br/></div>;
+			case "bash":
+				return <div key={i} className={clname}>source  "/etc/{elem}"<br/></div>;
 
 		}
 

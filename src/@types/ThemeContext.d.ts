@@ -1,6 +1,6 @@
 type ThemeContextTheme = "darcula" | "atom-one-dark" | "railscasts" | "solarized-dark" | "monokai";
-type ThemeContextLanguage = "c" | "rust" | "python" | "go";
-type ThemeContextExtension = "c" | "rs" | "py" | "go";
+type ThemeContextLanguage = "c" | "rust" | "python" | "go" | "bash";
+type ThemeContextExtension = "c" | "rs" | "py" | "go" | "sh";
 type ThemeContextMode = "dark" | "light";
 type Theme = {
 	theme?: ThemeContextTheme;

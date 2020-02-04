@@ -43,6 +43,9 @@ class Breadcrumbs extends React.Component<BreadcrumbsProps, BreadcrumbsState> {
 				case "python":
 					cc = "#";
 					break;
+				case "bash":
+					cc = "#";
+					break;
 			}
 
 			let sourceCode = `${cc} NAVIGATION

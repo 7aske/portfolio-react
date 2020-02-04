@@ -95,9 +95,41 @@ func ContactMe() (string, error) {
 }
 `;
 
+// language=TEXT
+let shSourceCode = `
+# sends message to the server using curl
+send_message(){
+  curl \\
+    -H "Content-Type: application/json" \\
+    -X POST \\
+    -d "{\\"name\\":\\"$1\\",\\"email\\":\\"$2\\",\\"message\\":\\"$3\\"}" \\
+    ${window.location.protocol}//${window.location.hostname}/mail/send
+}
+contact_me(){
+  # 'name'    - Your name.
+  # 'email'   - Your email so I can respond back.
+  # 'message' - Message you're sending me.
+  /*TOOLTIP[%Write your name between the quotation marks%,%NAME%]*/="$(cat << EOF\n    /*INPUT[%text%,%name%]*/\n  END\n  )"
+  /*TOOLTIP[%Write your email between the quotation marks%,%EMAIL%]*/="$(cat << EOF\n    /*INPUT[%text%,%email%]*/\n  END\n  )"
+  /*TOOLTIP[%Write your message text below%,%MESSAGE%]*/="$(cat << EOF\n    /*TEXTAREA[%message%]*/\n  EOF\n  )"
+
+
+  # After filling the required data tap on the
+  # 'send_message' function call to submit!
+  #
+  /*BUTTON[%send_message%,%submit%]*/ "$NAME" "$EMAIL" "$MESSAGE"
+  if [ "$?" = 0 ]; then
+    echo "Message sent!"
+  elif
+    echo "Message sending failed"
+  fi
+}
+`;
+
 export const contactSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
 	go: goSourceCode,
+	bash: shSourceCode,
 };

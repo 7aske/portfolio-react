@@ -144,10 +144,22 @@ ${skills.map(skill => skillFmt(skill, "go")).join("\n")}
 )
 `;
 
+// language=TEXT
+let shSourceCode = `
+# 
+#  These represent confidence I have in a certain
+#  language, technology or framework.
+#  Confidence values range from 0x00 to 0x${(100).toString(16)}.
+#  Naturally numbers are in hex.
+# 
+${skills.map(skill => skillFmt(skill, "bash")).join("\n")}
+`;
+
 export const skillsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
 	go: goSourceCode,
+	bash: shSourceCode,
 };
 

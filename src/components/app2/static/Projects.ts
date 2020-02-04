@@ -177,9 +177,20 @@ var Projects = []Project{
 }
 `;
 
+// language=TEXT
+let shSourceCode = `
+#
+# Here you can find some of the more notable projects I had
+# worked on. Projects have links to their respective repos.
+#
+
+${projects.map(proj => projFmt(proj, "bash")).join("\n")}
+`;
+
 export const projectsSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rustSourceCode,
 	python: pySourceCode,
 	go: goSourceCode,
+	bash: shSourceCode,
 };

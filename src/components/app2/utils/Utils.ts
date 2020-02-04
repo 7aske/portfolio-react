@@ -3,6 +3,7 @@ import * as cfmt from "./CFormat";
 import * as rsfmt from "./RustFormat";
 import * as pyfmt from "./PythonFormat";
 import * as gofmt from "./GoLangFormat";
+import * as shfmt from "./ShellFormat";
 
 export const getThemeExt = (lang:ThemeContextLanguage):string =>{
 	switch (lang) {
@@ -14,6 +15,8 @@ export const getThemeExt = (lang:ThemeContextLanguage):string =>{
 			return "py";
 		case "go":
 			return "go";
+		case "bash":
+			return "sh";
 	}
 };
 
@@ -27,6 +30,8 @@ export const pageNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 			return pyfmt.pageNavFmt(link);
 		case "go":
 			return gofmt.pageNavFmt(link);
+		case "bash":
+			return shfmt.pageNavFmt(link);
 
 	}
 };
@@ -41,6 +46,8 @@ export const linkNavFmt = (link: NavigationLink, lang: ThemeContextLanguage): st
 			return pyfmt.linkNavFmt(link);
 		case "go":
 			return gofmt.linkNavFmt(link);
+		case "bash":
+			return shfmt.linkNavFmt(link);
 
 	}
 };
@@ -55,6 +62,8 @@ export const skillFmt = (skill: Skill, lang: ThemeContextLanguage):string => {
 			return pyfmt.skillFmt(skill);
 		case "go":
 			return gofmt.skillFmt(skill);
+		case "bash":
+			return shfmt.skillFmt(skill);
 
 	}
 };
@@ -69,6 +78,8 @@ export const contactFmt = (contact: Contact, lang: ThemeContextLanguage): string
 			return pyfmt.contactFmt(contact);
 		case "go":
 			return gofmt.contactFmt(contact);
+		case "bash":
+			return shfmt.contactFmt(contact);
 
 	}
 };
@@ -83,6 +94,8 @@ export const eduFmt = (edu: Education, lang: ThemeContextLanguage): string => {
 			return pyfmt.eduFmt(edu);
 		case "go":
 			return gofmt.eduFmt(edu);
+		case "bash":
+			return shfmt.eduFmt(edu);
 
 	}
 };
@@ -97,6 +110,8 @@ export const socialFmt = (soc: Social, lang: ThemeContextLanguage): string => {
 			return pyfmt.socialFmt(soc);
 		case "go":
 			return gofmt.socialFmt(soc);
+		case "bash":
+			return shfmt.socialFmt(soc);
 
 	}
 };
@@ -112,6 +127,8 @@ export const projFmt = (proj: Project, lang: ThemeContextLanguage):string => {
 			return pyfmt.projFmt(proj);
 		case "go":
 			return gofmt.projFmt(proj);
+		case "bash":
+			return shfmt.projFmt(proj);
 	}
 
 };
@@ -132,7 +149,7 @@ export const parseAnchors = (source: string): string => {
 	let res;
 	do {
 		safetyCheck--;
-		res = source.match(/\/\*ANCHOR\[\$(.+)\$,\$(.+)\$]\*\//);
+		res = source.match(/\/\*ANCHOR\[[$%](.+)[$%],[$%](.+)[$%]]\*\//);
 		if (res && res.length === 3) {
 			source = source.replace(res[0], anchorFmt(res[2], res[1]));
 		}
@@ -156,7 +173,7 @@ export const parseTooltips = (source: string): string => {
 	let res;
 	do {
 		safetyCheck--;
-		res = source.match(/\/\*TOOLTIP\[\$(.+)\$,\$(.+)\$]\*\//);
+		res = source.match(/\/\*TOOLTIP\[[$%](.+)[$%],[$%](.+)[$%]]\*\//);
 		if (res && res.length === 3) {
 			source = source.replace(res[0], tooltipFmt(res[2], res[1]));
 		}
@@ -181,7 +198,7 @@ export const parseTextareas = (source: string): string => {
 	let res;
 	do {
 		safetyCheck--;
-		res = source.match(/\/\*TEXTAREA\[\$(.+)\$]\*\//);
+		res = source.match(/\/\*TEXTAREA\[[$%](.+)[$%]]\*\//);
 		if (res && res.length === 2) {
 			source = source.replace(res[0], fmtTextarea(res[1], "\"Your text here\""));
 		}
@@ -211,7 +228,7 @@ export const parseInputs = (source: string): string => {
 	let res;
 	do {
 		safetyCheck--;
-		res = source.match(/\/\*INPUT\[\$(.+)\$,\$(.+)\$]\*\//);
+		res = source.match(/\/\*INPUT\[[$%](.+)[$%],[$%](.+)[$%]]\*\//);
 		if (res && res.length === 3) {
 			source = source.replace(res[0], fmtInput(res[2], res[1], "Your input here!"));
 		}
@@ -236,7 +253,7 @@ export const parseButtons = (source: string): string => {
 	let res;
 	do {
 		safetyCheck--;
-		res = source.match(/\/\*BUTTON\[\$(.+)\$,\$(.+)\$]\*\//);
+		res = source.match(/\/\*BUTTON\[[$%](.+)[$%],[$%](.+)[$%]]\*\//);
 		if (res && res.length === 3) {
 			source = source.replace(res[0], fmtButton(res[1], res[2]));
 		}

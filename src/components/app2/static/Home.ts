@@ -1,5 +1,5 @@
 import { socialMedia } from "./Social";
-import { socialFmt } from "../utils/Utils";
+import { fold, socialFmt } from "../utils/Utils";
 import { languages } from "../components/styling/ThemeContext";
 
 const greetingMessage = (lang: string) => `Hi! Welcome to my portfolio website. As you can see it is designed to mimic ${lang.charAt(0).toUpperCase() + lang.substring(1)} code. It might be scary but if you're here you already know as thing or two about programming. Navigation is preformed through language 'import' directives and all underlined text has a clickable action. You can also change the language (${languages.map(l=>l).join(", ")}) or color scheme in the upper right corner. If you have any suggestions or problems feel free to contact me through 'contact' import or at social media sites linked below.`;
@@ -75,10 +75,21 @@ func main() {
 }
 `;
 
+// language=TEXT
+let shSourceCode = `
+GREETING="$(cat << END\n  "${fold(greetingMessage("bash"), 80, 1)}\nEND\n)"
+
+echo "$GREETING"
+
+declare -a SOCIAL
+${socialMedia.map(soc => socialFmt(soc, "bash")).join("\n")}
+`;
+
 export const homeSourceCode: { [key: string]: string } = {
 	c: cSourceCode,
 	rust: rsSourceCode,
 	python: pySourceCode,
 	go: goSourceCode,
+	bash: shSourceCode,
 };
 
