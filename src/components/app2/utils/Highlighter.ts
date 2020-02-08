@@ -4,7 +4,7 @@ import M from "materialize-css";
 
 
 type HighlighterOptions = {
-	language: string;
+	language: ThemeContextLanguage;
 	classPrefix?: string;
 	useBR?: boolean;
 }

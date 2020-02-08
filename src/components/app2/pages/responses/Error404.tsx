@@ -1,8 +1,7 @@
 import * as React from "react";
-import { createRef } from "react";
-import { hlight } from "../../utils/Highlighter";
-import { ThemeContext } from "../../components/styling/ThemeContext";
+import { RefObject } from "react";
 import Navigation from "../../components/nav/Navigation";
+import { useHighlighter } from "../../../../hooks/highlighter";
 
 let sourceCode = `
 #define ERR_TYP "404 NOT FOUND"
@@ -16,42 +15,15 @@ let sourceCode = `
 extern void /*ANCHOR[$go_back$,$/$]*/(const char* path);
 `;
 
-class Error404 extends React.Component<any, any> {
-	ref: React.RefObject<HTMLPreElement>;
+const Error404 = () => {
+	const ref = useHighlighter(sourceCode) as RefObject<HTMLPreElement>;
 
-	constructor(props: any) {
-		super(props);
-		this.ref = createRef();
-	}
+	return (
+		<div className="container">
+			<Navigation/>
+			<pre ref={ref} className="fg-accent-2 left-align"/>
+		</div>
+	);
+};
 
-	componentDidMount(): void {
-		this.highlight();
-	}
-
-	componentDidUpdate(): void {
-		this.highlight();
-	}
-
-
-	highlight() {
-		if (this.ref.current) {
-			hlight(this.ref.current, sourceCode, {
-				language: this.context.language,
-				classPrefix: this.context.theme,
-			});
-		}
-	}
-
-	render() {
-		return (
-			<div className="container">
-				<Navigation/>
-				<pre ref={this.ref} className="fg-accent-2 left-align"/>
-			</div>
-		);
-	}
-
-}
-
-Error404.contextType = ThemeContext;
 export default Error404;

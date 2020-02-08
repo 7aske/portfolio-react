@@ -1,6 +1,5 @@
-import React, { createRef } from "react";
-import navigationLinks from "./NavigationLinks";
-import { languages, ThemeContext, themes } from "../styling/ThemeContext";
+import React, { createRef, useContext } from "react";
+import { languages, themeContext, themes } from "../styling/ThemeContext";
 import { Link } from "react-router-dom";
 import { getThemeExt } from "../../utils/Utils";
 
@@ -15,58 +14,47 @@ type NavigationState = {
 	links: HeaderHref[];
 };
 
-class Toolbar extends React.Component<any, NavigationState> {
-	state: NavigationState;
-	private readonly navRef = createRef<HTMLDivElement>();
+const Toolbar = () => {
+	const navRef = createRef<HTMLElement>();
+	const context = useContext(themeContext);
 
-	constructor(props: any) {
-		super(props);
-		this.state = {links: navigationLinks};
-		this.changeTheme = this.changeTheme.bind(this);
-		this.changeLang = this.changeLang.bind(this);
-	}
-
-	changeTheme() {
-		let index = themes.indexOf(this.context.theme);
+	const changeTheme = ()=> {
+		let index = themes.indexOf(context.theme);
 		if (index === themes.length - 1) {
-			this.props.changeTheme({theme: themes[0]});
+			context.changeTheme({theme: themes[0]});
 		} else {
-			this.props.changeTheme({theme: themes[index + 1]});
+			context.changeTheme({theme: themes[index + 1]});
 		}
-	}
+	};
 
-	changeLang() {
-		let index = languages.indexOf(this.context.language);
+	const changeLang = () =>{
+		let index = languages.indexOf(context.language);
 		if (index === languages.length - 1) {
-			this.props.changeTheme({language: languages[0]});
+			context.changeTheme({language: languages[0]});
 		} else {
-			this.props.changeTheme({language: languages[index + 1]});
+			context.changeTheme({language: languages[index + 1]});
 		}
-	}
+	};
+	return (
+		<nav ref={navRef} className="bg-def-1" style={{userSelect: "none"}}>
+			<div className="nav-wrapper container">
+				<Link className="brand-logo left show-on-medium-and-up hide-on-small-and-down"
+					  to={"/"}>portfolio.{getThemeExt(context.language as ThemeContextLanguage)}</Link>
+				<Link className="brand-logo left show-on-small hide-on-med-and-up" to={"/"}>nt</Link>
+				<ul className="right">
+					<li>
+						<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={changeTheme}
+						   className="right">{context.theme}</a>
+					</li>
+					<li>
+						<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={changeLang}
+						   className="right">{context.language}</a>
+					</li>
+				</ul>
 
-	render() {
-		return (
-			<nav ref={this.navRef} className="bg-def-1" style={{userSelect: "none"}}>
-				<div className="nav-wrapper container">
-					<Link className="brand-logo left show-on-medium-and-up hide-on-small-and-down"
-						  to={"/"}>portfolio.{getThemeExt(this.context.language)}</Link>
-					<Link className="brand-logo left show-on-small hide-on-med-and-up" to={"/"}>nt</Link>
-					<ul className="right">
-						<li>
-							<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={this.changeTheme}
-							   className="right">{this.context.theme}</a>
-						</li>
-						<li>
-							<a style={{cursor: "pointer", textDecoration: "underline"}} onClick={this.changeLang}
-							   className="right">{this.context.language}</a>
-						</li>
-					</ul>
+			</div>
+		</nav>
+	);
+};
 
-				</div>
-			</nav>
-		);
-	}
-}
-
-Toolbar.contextType = ThemeContext;
 export default Toolbar;

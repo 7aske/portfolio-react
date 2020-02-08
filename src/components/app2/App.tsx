@@ -9,7 +9,7 @@ import Contact from "./pages/contact/Contact";
 import Success200 from "./pages/responses/Success200";
 import Error429 from "./pages/responses/Error429";
 import Error400 from "./pages/responses/Error400";
-import { defaultTheme, languages, ThemeContext, themes } from "./components/styling/ThemeContext";
+import { defaultTheme, languages, themeContext, themes } from "./components/styling/ThemeContext";
 import Toolbar from "./components/nav/Toolbar";
 import "./App.css";
 import "../../assets/stylesheets/theme.css";
@@ -36,8 +36,10 @@ class App extends React.Component<any, { theme: Theme }> {
 		const curr = this.state.theme;
 		for (let prop in theme) {
 			if (theme.hasOwnProperty(prop)) {
-				params.set(prop, theme[prop]);
-				curr[prop] = theme[prop];
+				if (typeof theme[prop] === "string"){
+					params.set(prop, theme[prop]);
+					curr[prop] = theme[prop];
+				}
 			}
 		}
 		if (window.history.pushState) {
@@ -67,9 +69,9 @@ class App extends React.Component<any, { theme: Theme }> {
 	render() {
 		return (
 			<main className="App bg-dark-0">
-				<ThemeContext.Provider value={this.state.theme}>
+				<themeContext.Provider value={{...this.state.theme,changeTheme:this.changeTheme }}>
 					<BrowserRouter>
-						<Toolbar changeTheme={this.changeTheme}/>
+						<Toolbar />
 						<Switch>
 							<Route exact path="/" component={Home}/>
 							<Route exact path="/projects" component={Projects}/>
@@ -82,7 +84,7 @@ class App extends React.Component<any, { theme: Theme }> {
 							<Route component={Error404}/>
 						</Switch>
 					</BrowserRouter>
-				</ThemeContext.Provider>
+				</themeContext.Provider>
 			</main>
 		);
 	}

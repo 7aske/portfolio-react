@@ -2,7 +2,7 @@ import * as React from "react";
 import { createRef } from "react";
 import { anchorFmt } from "../../utils/Utils";
 import { hlight } from "../../utils/Highlighter";
-import { ThemeContext } from "../styling/ThemeContext";
+import { themeContext } from "../styling/ThemeContext";
 
 type BreadcrumbsProps = {};
 type BreadcrumbsState = { crumbs: string };
@@ -84,5 +84,5 @@ ${cc} in the upper right corner`;
 	};
 }
 
-Breadcrumbs.contextType = ThemeContext;
+Breadcrumbs.contextType = themeContext;
 export default Breadcrumbs;

@@ -1,47 +1,17 @@
 import * as React from "react";
-import { createRef, RefObject } from "react";
+import { RefObject } from "react";
 import { skillsSourceCode } from "../../static/Skills";
-import { hlight } from "../../utils/Highlighter";
-import { ThemeContext } from "../../components/styling/ThemeContext";
 import Navigation from "../../components/nav/Navigation";
+import { useHighlighter } from "../../../../hooks/highlighter";
 
-type SkillsProps = {};
-type SkillsState = {};
+const Skills = () => {
+	const ref = useHighlighter(skillsSourceCode) as RefObject<HTMLPreElement>;
+	return (
+		<div className="container">
+			<Navigation/>
+			<pre ref={ref} className="fg-accent-2 left-align"/>
+		</div>
+	);
+};
 
-class Skills extends React.Component<SkillsProps, SkillsState> {
-	ref: RefObject<HTMLPreElement>;
-
-	constructor(props: SkillsProps) {
-		super(props);
-		this.ref = createRef();
-	}
-
-	componentDidMount(): void {
-		this.highlight();
-	}
-
-	componentDidUpdate(): void {
-		this.highlight();
-	}
-
-	highlight() {
-		if (this.ref.current) {
-			hlight(this.ref.current, skillsSourceCode[this.context.language], {
-				language: this.context.language,
-				classPrefix: this.context.theme,
-			});
-		}
-	}
-
-	render() {
-		return (
-			<div className="container">
-				<Navigation/>
-				<pre ref={this.ref} className="fg-accent-2 left-align"/>
-			</div>
-		);
-	};
-}
-
-Skills.contextType = ThemeContext;
 export default Skills;

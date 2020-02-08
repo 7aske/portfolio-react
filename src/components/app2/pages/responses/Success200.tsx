@@ -1,8 +1,7 @@
 import * as React from "react";
-import { createRef } from "react";
-import { ThemeContext } from "styled-components";
-import { hlight } from "../../utils/Highlighter";
+import { RefObject } from "react";
 import Navigation from "../../components/nav/Navigation";
+import { useHighlighter } from "../../../../hooks/highlighter";
 
 let sourceCode = `
 #define RESP_TYP "200 OK"
@@ -16,42 +15,15 @@ let sourceCode = `
 extern void /*ANCHOR[$go_back$,$/$]*/(const char* path);
 `;
 
-class Success200 extends React.Component<any, any> {
-	ref: React.RefObject<HTMLPreElement>;
+const Success200 = () => {
+	const ref = useHighlighter(sourceCode) as RefObject<HTMLPreElement>;
 
-	constructor(props: any) {
-		super(props);
-		this.ref = createRef();
-	}
+	return (
+		<div className="container">
+			<Navigation/>
+			<pre ref={ref} className="fg-accent-2 left-align"/>
+		</div>
+	);
+};
 
-	highlight() {
-		if (this.ref.current) {
-			hlight(this.ref.current, sourceCode, {
-				language: this.context.language,
-				classPrefix: this.context.theme,
-			});
-		}
-	}
-
-	componentDidMount(): void {
-		this.highlight();
-	}
-
-	componentDidUpdate(): void {
-		this.highlight();
-	}
-
-
-	render() {
-		return (
-			<div className="container">
-				<Navigation/>
-				<pre ref={this.ref} className="fg-accent-2 left-align"/>
-			</div>
-		);
-	}
-
-}
-
-Success200.contextType = ThemeContext;
 export default Success200;

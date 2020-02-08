@@ -1,7 +1,7 @@
 import * as React from "react";
 import navigationLinks from "./NavigationLinks";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../styling/ThemeContext";
+import { themeContext } from "../styling/ThemeContext";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 
 type NavigationProps = { otherImports?: string[] };
@@ -88,5 +88,5 @@ class Navigation extends React.Component<NavigationProps, NavigationState> {
 	};
 }
 
-Navigation.contextType = ThemeContext;
+Navigation.contextType = themeContext;
 export default Navigation;
