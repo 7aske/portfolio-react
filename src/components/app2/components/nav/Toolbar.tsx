@@ -10,15 +10,11 @@ export type HeaderHref = {
 	target?: string;
 }
 
-type NavigationState = {
-	links: HeaderHref[];
-};
-
 const Toolbar = () => {
 	const navRef = createRef<HTMLElement>();
 	const context = useContext(themeContext);
 
-	const changeTheme = ()=> {
+	const changeTheme = () => {
 		let index = themes.indexOf(context.theme);
 		if (index === themes.length - 1) {
 			context.changeTheme({theme: themes[0]});
@@ -27,7 +23,7 @@ const Toolbar = () => {
 		}
 	};
 
-	const changeLang = () =>{
+	const changeLang = () => {
 		let index = languages.indexOf(context.language);
 		if (index === languages.length - 1) {
 			context.changeTheme({language: languages[0]});

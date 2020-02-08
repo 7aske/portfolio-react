@@ -10,7 +10,6 @@ import { useHighlighter } from "../../../../hooks/highlighter";
 const Contact = () => {
 	const ref = useHighlighter(contactSourceCode) as RefObject<HTMLPreElement>;
 	const context = useContext(themeContext);
-	let form = null;
 
 	const sendMessage = async (name: string, email: string, message: string) => {
 		const url = new URL(window.location.href);
@@ -51,7 +50,7 @@ const Contact = () => {
 			let source = ref.current.innerHTML;
 			source = "<form id='form' method='POST' action='/mail/send_message'>" + source + "</form>";
 			ref.current.innerHTML = source;
-			form = ref.current.querySelector("form#form");
+			let form = ref.current.querySelector("form#form");
 			ref.current.querySelectorAll("input.embedded, textarea.embedded").forEach(inp => inp.classList.add(context.theme ? context.theme + "-hljs-string" : "hljs-string"));
 			if (form) {
 				form.addEventListener("submit", handleSubmit);
