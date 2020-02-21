@@ -39,9 +39,9 @@ const Contact = () => {
 		if (ev.target) {
 			const tar = ev.target as unknown as HTMLFormElement;
 			const name = (tar["name"] as unknown as HTMLInputElement).value;
-			const email = (tar["name"] as unknown as HTMLInputElement).value;
-			const messenger = (tar["name"] as unknown as HTMLTextAreaElement).value;
-			sendMessage(name, email, messenger);
+			const email = (tar["email"] as unknown as HTMLInputElement).value;
+			const message = (tar["message"] as unknown as HTMLTextAreaElement).value;
+			sendMessage(name, email, message);
 		}
 	};
 
