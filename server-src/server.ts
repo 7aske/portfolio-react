@@ -1,5 +1,4 @@
 import express from "express";
-import webController from "./controllers/WebController";
 import mailController from "./controllers/MailController";
 import * as bodyParser from "body-parser";
 import * as dotenv from "dotenv";
@@ -15,8 +14,10 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("build"));
+app.use(express.static("public"));
+app.use("/200", (req, res) => res.sendFile("index.html", {root: "public"}));
+app.use("/429", (req, res) => res.sendFile("index.html", {root: "public"}));
+app.use("/400", (req, res) => res.sendFile("index.html", {root: "public"}));
 app.use("/mail", mailController);
-app.use("/", webController);
 
 app.listen(SERVER_PORT, () => console.log("Server running on port " + SERVER_PORT));

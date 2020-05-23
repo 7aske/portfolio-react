@@ -1,6 +1,7 @@
 import { Router } from "express";
 import * as nodemailer from "nodemailer";
 import rateLimit from "express-rate-limit";
+import { exec, spawn } from "child_process";
 
 const mailController = Router();
 
@@ -32,7 +33,7 @@ mailController.post("/send", mailLimiter, async (req, res) => {
 		const email = req.body["email"];
 		const body = req.body["message"];
 		try {
-			await sendMail(name, email, body);
+			await sendMailPostfix(name, email, body);
 			res.status(200).send("200");
 		} catch (e) {
 			console.log(e);
@@ -42,6 +43,17 @@ mailController.post("/send", mailLimiter, async (req, res) => {
 		res.status(400).send("400");
 	}
 });
+
+async function sendMailPostfix(name: string, email: string, body: string) {
+	const sendmail = spawn("sendmail", ["-t", process.env.MAILER_MAILTO]);
+	sendmail.stdin.write(
+`From: nik@7aske.com
+Subject: Portfolio Message
+${name} - ${email}
+${body}
+.
+`);
+}
 
 async function sendMail(name: string, email: string, body: string) {
 	const username = process.env.MAILER_USERNAME;

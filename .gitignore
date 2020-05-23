@@ -11,6 +11,8 @@
 
 # production
 /build
+/build-server
+/dist
 /src/config/*.**
 
 # misc

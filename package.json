@@ -29,11 +29,12 @@
   "scripts": {
     "start": "npm run start-server",
     "start-dev": "react-scripts start",
-    "build-server": "cd server-src && tsc --build tsconfig.json",
-    "build": "react-scripts build && npm run build-server",
+    "build-server": "cd server-src && tsc --build tsconfig.json && cd .. && webpack && cp .env ./dist/",
+    "build-frontend" : "react-scripts build && mkdir -p dist/public && cp -r build/* dist/public/",
+    "build": "npm run build-frontend && npm run build-server",
     "start-server-dev": "nodemon --config nodemon.json",
-    "start-server": "node build/server.js",
-    "deploy": "rsync -have ssh build root@7aske.com:/srv/goose/instances/portfolio-react/"
+    "start-server": "node build-server/server.js",
+    "deploy": "rsync -have ssh dist/ root@7aske.com:/srv/http/portfolio/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -65,7 +66,10 @@
     "@types/react-dom": "^16.9.3",
     "@types/react-router": "^5.1.2",
     "@types/react-router-dom": "^5.1.1",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   },
   "proxy": "http://localhost:3001"
 }
