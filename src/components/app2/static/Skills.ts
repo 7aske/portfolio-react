@@ -12,7 +12,7 @@ export const skills: Skill[] = [{
 		confidence: 80,
 	}, {
 		name: "React",
-		confidence: 69,
+		confidence: 75,
 	}, {
 		name: "Express",
 		confidence: 81,
@@ -48,6 +48,9 @@ export const skills: Skill[] = [{
 		confidence: 44,
 	}, {
 		name: "Thymeleaf",
+		confidence: 50,
+	}, {
+		name: "JSP",
 		confidence: 55,
 	}],
 }, {
@@ -55,13 +58,12 @@ export const skills: Skill[] = [{
 	confidence: 70,
 }, {
 	name: "C Sharp",
-	confidence: 50,
-	frameworks: [],
+	confidence: 50
 }, {
 	name: "Databases",
 	confidence: 75,
 	frameworks: [{
-		name: "MariaDB",
+		name: "MySQL",
 		confidence: 75,
 	}, {
 		name: "MongoDB",
@@ -72,7 +74,7 @@ export const skills: Skill[] = [{
 	confidence: 80,
 	frameworks: [{
 		name: "Linux",
-		confidence: 80,
+		confidence: 82,
 	}, {
 		name: "FreeBSD",
 		confidence: 40,
@@ -85,14 +87,14 @@ export const skills: Skill[] = [{
 	confidence: 70,
 	frameworks: [{
 		name: "Bash",
-		confidence: 65,
+		confidence: 72,
 	}, {
 		name: "Python",
 		confidence: 70,
 	}],
 }, {
 	name: "Networking",
-	confidence: 70,
+	confidence: 75,
 }];
 
 // language=TEXT
