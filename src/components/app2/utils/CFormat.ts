@@ -7,7 +7,7 @@ export const linkNavFmt = (link: NavigationLink): string => {
 };
 
 export const skillFmt = (skill: Skill) => {
-	let skillName = skill.name.replace(" ", "_").toUpperCase();
+	let skillName = skill.name.replace(/ /g, "_").toUpperCase();
 	let out = `static uint8_t ${skillName} = 0x${skill.confidence.toString(16)};\n`;
 	if (skill.frameworks) {
 		skill.frameworks.forEach(fw => {
